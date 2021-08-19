@@ -5,25 +5,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/main.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="public/css/custom.css">
     <title>ShineWay|Login</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">ShineWay</a>
-        </div>
-    </nav>
+    <div class="bg-blur position-absolute top-0 start-0"></div>
+    <div class="w-100 vh-100 d-flex justify-content-center align-items-center ">
+        <div class="container-fluid blur-0">
+            <div class="row justify-content-center">
+                <div class=" col-12 col-md-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-header fw-bold fs-3">
+                            Welcome Back!
+                        </div>
+                        <div class="card-body">
 
-    <div class="row vh-90">
-        <div class="col-2 bg-gray-400 ">
+                            <form class="row g-3 needs-validation justify-content-center" novalidate>
+                                <div class="col-12">
+                                    <div class="form-outline">
+                                        <input type="email" class="form-control" id="loginEmail" required />
+                                        <label for="loginEmail" class="form-label">Email</label>
+                                        <div class="invalid-feedback">You must enter a valid email address!</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-outline">
+                                        <input type="password" class="form-control" id="loginPassword" required />
+                                        <label for="loginPassword" class="form-label">Password</label>
+                                        <div class="invalid-feedback">You must enter a password!</div>
+                                    </div>
+                                </div>
 
-        </div>
-        <div class="col-10 ">
+                                <div class="col-6">
+                                    <a href="#!">Forgot password?</a>
+                                </div>
 
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-block" type="submit">LOG IN</button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="position-absolute top-0 start-0 ">
+        <p class="display-6 fw-bold p-2 inline-block "> <img src="public/img/ShineWay.png" alt="logo" class="logo "> <span>ShineWay</span></p>
+    </div>
+
+    <div class="position-absolute bottom-0 end-0 pe-2">
+        <span class=" fs-tiny text-white">&copy;2021 ShineWay. All Rights Reserved</span>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <script src="public/js/form-validstion.js"></script>
 </body>
 
 </html>

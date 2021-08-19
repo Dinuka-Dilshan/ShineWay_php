@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.vh-90 {
+  height: 92vh;
+}
+
+.bg-light {
+  background-color: #f7f9fc !important;
+}
+
+.bg-blur {
+  height: 100vh;
+  width: 100%;
+  background-image: url("../img/login-bg.jpg");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fs-tiny{
+  font-size: 0.7rem;
+}
+
+.logo{
+  width: 2.5rem;
+  height: 2.5rem;
+}
