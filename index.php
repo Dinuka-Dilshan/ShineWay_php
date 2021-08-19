@@ -78,7 +78,7 @@
     </div>
 
     <div class="position-absolute bottom-0 end-0 pe-2">
-        <span class=" fs-tiny text-white">&copy;2021 ShineWay. All Rights Reserved</span>
+        <span class=" fs-tiny text-white">&copy;2021 ShineWay | All Rights Reserved</span>
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>

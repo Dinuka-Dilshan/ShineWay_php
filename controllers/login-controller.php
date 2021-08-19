@@ -12,7 +12,7 @@
         $result = $connection->query($query);
 
        if($result->num_rows == 1){
-            echo 'done';
+           header('Location:../views/home.php');
        }else{
            session_start();
            $_SESSION['loginError'] = "Incorrect";
