@@ -101,28 +101,14 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
                 <div class="row g-3 mt-lg-3">
                     <div class="col-12">
                         <div class="card shadow-0 border">
-                            <div class="card-header">
+                            <div class="card-header bg-success">
                                 <div class="container-fluid">
                                     <div class="row justify-content-between">
-                                        <div class="col-12 col-lg-4">
+                                        <div class="col-12 col-lg-4 m-1 fw-bold fs-5 text-white">
                                             Available Vehicles
                                         </div>
 
-                                        <div class="col-6 col-lg-2">
-                                            <select class="form-control rounded bg-white" id="searchIndex">
-                                                <option value="0">Search By</option>
-                                                <option value="1">Vehicle Type</option>
-                                                <option value="2">Brand</option>
-                                                <option value="3">Model</option>
-                                                <option value="4">Type</option>
-                                                <option value="5">Daily Price</option>
-                                                <option value="6">Weekly Price</option>
-                                                <option value="7">Monthly price</option>
-
-                                            </select>
-                                        </div>
-
-                                        <div class="col-6 col-lg-4 d-flex align-items-center">
+                                        <div class="col-12 col-lg-3 d-flex align-items-center">
                                             <div class="input-group rounded me-0">
                                                 <input id="searchInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                                 <span class="input-group-text border-0" id="search-addon">
@@ -134,17 +120,17 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
                                 </div>
                             </div>
                             <div class="card-body table-responsive ">
-                                <table class="table" id="dataTable">
+                                <table class="table  table-striped" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Vehicle Number</th>
-                                            <th scope="col">Brand</th>
-                                            <th scope="col">Model</th>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Daily Price</th>
-                                            <th scope="col">Weekly Price</th>
-                                            <th scope="col">Monthly price</th>
+                                            <th class="fs-6 fw-bold" scope="col">#</th>
+                                            <th class="fs-6 fw-bold" scope="col">Vehicle Number</th>
+                                            <th class="fs-6 fw-bold" scope="col">Brand</th>
+                                            <th class="fs-6 fw-bold" scope="col">Model</th>
+                                            <th class="fs-6 fw-bold" scope="col">Type</th>
+                                            <th class="fs-6 fw-bold" scope="col">Daily Price</th>
+                                            <th class="fs-6 fw-bold" scope="col">Weekly Price</th>
+                                            <th class="fs-6 fw-bold" scope="col">Monthly price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
