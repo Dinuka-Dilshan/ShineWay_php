@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
+session_start();
+$allAvailableVehicles = $_SESSION['allAvailableVehicles'];
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +19,11 @@
 <body>
 
     <div class="vh-100 w-100 d-flex">
-        <div class="vh-100 w-15 d-none d-xl-block border-end">
+        <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden bg-info">
 
         </div>
 
-        <div class="vh-100 w-85 ">
+        <div class="vh-100 w-85 overflow-y-scroll">
             <!--navbar-->
             <nav class="navbar navbar-expand-lg navbar-white  bg-white shadow-0 border-bottom">
                 <div class="container-fluid">
@@ -100,9 +100,26 @@
 
                 <div class="row g-3 mt-lg-3">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table">
+                        <div class="card shadow-0 border">
+                            <div class="card-header">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-between">
+                                        <div class="col-4 col-lg-4">
+                                            Available Vehicles
+                                        </div>
+                                        <div class="col-8 col-lg-4 d-flex align-items-center">
+                                            <div class="input-group rounded me-0">
+                                                <input id="searchInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <span class="input-group-text border-0" id="search-addon">
+                                                    <i class="fas fa-search"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body table-responsive ">
+                                <table class="table" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -116,18 +133,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($allAvailableVehicles as $vehicle):?>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td><?php echo $vehicle['vehicle_num']?></td>
-                                            <td><?php echo $vehicle['Brand']?></td>
-                                            <td><?php echo $vehicle['Model']?></td>
-                                            <td><?php echo $vehicle['Type']?></td>
-                                            <td><?php echo $vehicle['Daily_price']?></td>
-                                            <td><?php echo $vehicle['Weekly_price']?></td>
-                                            <td><?php echo $vehicle['Monthly_price']?></td>
-                                        </tr>
-                                        <?php endforeach?>
+                                        <?php $countTable = 1; ?>
+                                        <?php foreach ($allAvailableVehicles as $vehicle) : ?>
+                                            <tr>
+                                                <th scope="row"><?php echo $countTable  ?></th>
+                                                <td><?php echo $vehicle['vehicle_num'] ?></td>
+                                                <td><?php echo $vehicle['Brand'] ?></td>
+                                                <td><?php echo $vehicle['Model'] ?></td>
+                                                <td><?php echo $vehicle['Type'] ?></td>
+                                                <td><?php echo $vehicle['Daily_price'] ?></td>
+                                                <td><?php echo $vehicle['Weekly_price'] ?></td>
+                                                <td><?php echo $vehicle['Monthly_price'] ?></td>
+                                            </tr>
+                                            <?php $countTable++ ?>
+                                        <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -148,7 +167,13 @@
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
-    <script src="public/js/form-validstion.js"></script>
+    <script src="../public/js/form-validstion.js"></script>
+
+
+    <script type="module">
+        import {easeFilterDataTable} from '../public/js/table-filter.js';
+        easeFilterDataTable('searchInput','dataTable',3);
+    </script>
 </body>
 
 </html>
