@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $error ="";
+    $errorDisplay = "d-none";
+
+    if(isset($_SESSION['loginError'])){
+        $error = $_SESSION['loginError'];
+        $errorDisplay = "";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,19 +34,22 @@
                         <div class="card-header fw-bold fs-3">
                             Welcome Back!
                         </div>
+                        <div class="card-header <?php echo $errorDisplay ?>">
+                            <?php echo $error?>
+                        </div>
                         <div class="card-body">
 
-                            <form class="row g-3 needs-validation justify-content-center" novalidate>
+                            <form class="row g-3 needs-validation justify-content-center" novalidate action="controllers/login-controller.php" method="POST">
                                 <div class="col-12">
                                     <div class="form-outline">
-                                        <input type="email" class="form-control" id="loginEmail" required />
-                                        <label for="loginEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="loginEmail" name="email" required />
+                                        <label for="loginEmail" class="form-label"  >Email</label>
                                         <div class="invalid-feedback">You must enter a valid email address!</div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-outline">
-                                        <input type="password" class="form-control" id="loginPassword" required />
+                                        <input type="password" class="form-control"  name="password" id="loginPassword" required />
                                         <label for="loginPassword" class="form-label">Password</label>
                                         <div class="invalid-feedback">You must enter a password!</div>
                                     </div>
