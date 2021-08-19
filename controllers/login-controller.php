@@ -15,10 +15,8 @@
             echo 'done';
        }else{
            session_start();
-           $_SESSION['loginError'] = "Username or Password is incorrect";
+           $_SESSION['loginError'] = "Incorrect";
            header('location:../index.php');
        }
 
     }
-
-?>

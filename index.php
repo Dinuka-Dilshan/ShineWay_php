@@ -6,6 +6,7 @@
     if(isset($_SESSION['loginError'])){
         $error = $_SESSION['loginError'];
         $errorDisplay = "";
+        session_destroy();
     }
 ?>
 
@@ -34,7 +35,7 @@
                         <div class="card-header fw-bold fs-3">
                             Welcome Back!
                         </div>
-                        <div class="card-header <?php echo $errorDisplay ?>">
+                        <div class="card-header text-danger ms-1 <?php echo $errorDisplay ?>">
                             <?php echo $error?>
                         </div>
                         <div class="card-body">
