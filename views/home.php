@@ -104,10 +104,25 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
                             <div class="card-header">
                                 <div class="container-fluid">
                                     <div class="row justify-content-between">
-                                        <div class="col-4 col-lg-4">
+                                        <div class="col-12 col-lg-4">
                                             Available Vehicles
                                         </div>
-                                        <div class="col-8 col-lg-4 d-flex align-items-center">
+
+                                        <div class="col-6 col-lg-2">
+                                            <select class="form-control rounded bg-white" id="searchIndex">
+                                                <option value="0">Search By</option>
+                                                <option value="1">Vehicle Type</option>
+                                                <option value="2">Brand</option>
+                                                <option value="3">Model</option>
+                                                <option value="4">Type</option>
+                                                <option value="5">Daily Price</option>
+                                                <option value="6">Weekly Price</option>
+                                                <option value="7">Monthly price</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="col-6 col-lg-4 d-flex align-items-center">
                                             <div class="input-group rounded me-0">
                                                 <input id="searchInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                                 <span class="input-group-text border-0" id="search-addon">
@@ -169,10 +184,11 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
     <script src="../public/js/form-validstion.js"></script>
 
-
+    
     <script type="module">
-        import {easeFilterDataTable} from '../public/js/table-filter.js';
-        easeFilterDataTable('searchInput','dataTable',3);
+        import { easeFilterDataTable } from '../public/js/table-filter.js';
+        easeFilterDataTable('searchInput', 'dataTable');
+        
     </script>
 </body>
 
