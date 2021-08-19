@@ -1,5 +1,6 @@
 <?php
-session_start();
+    session_start();
+    $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +59,7 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 col-lg-3">
                         <div class="card">
                             <div class="card-header fw-bold">
@@ -93,6 +94,48 @@ session_start();
                     </div>
 
                 </div>
+
+
+                <!--table-->
+
+                <div class="row g-3 mt-lg-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Vehicle Number</th>
+                                            <th scope="col">Brand</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Daily Price</th>
+                                            <th scope="col">Weekly Price</th>
+                                            <th scope="col">Monthly price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach($allAvailableVehicles as $vehicle):?>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td><?php echo $vehicle['vehicle_num']?></td>
+                                            <td><?php echo $vehicle['Brand']?></td>
+                                            <td><?php echo $vehicle['Model']?></td>
+                                            <td><?php echo $vehicle['Type']?></td>
+                                            <td><?php echo $vehicle['Daily_price']?></td>
+                                            <td><?php echo $vehicle['Weekly_price']?></td>
+                                            <td><?php echo $vehicle['Monthly_price']?></td>
+                                        </tr>
+                                        <?php endforeach?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
