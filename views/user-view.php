@@ -59,6 +59,14 @@ $userList = $_SESSION['userList'];
                                 <td><?php echo $user['email'] ?></td>
                                 <td><?php echo $user['Telephone'] ?></td>
                                 <td><?php echo $user['Address'] ?></td>
+                                <form action="../controllers/user-view-controller.php" method="post">
+                                    <td>
+                                        <button name="submit-delete-user" value="<?php echo $user['ID'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </form>
+
                             </tr>
                             <?php $countTable++ ?>
                         <?php endforeach ?>
@@ -101,7 +109,7 @@ $userList = $_SESSION['userList'];
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
-    
+
 <!-- Modal image set -->
 <script>
     const table = document.getElementById('dataTable');
