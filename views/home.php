@@ -136,7 +136,7 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
                                     <tbody>
                                         <?php $countTable = 1; ?>
                                         <?php foreach ($allAvailableVehicles as $vehicle) : ?>
-                                            <tr>
+                                            <tr onclick="cellClickFire(this)" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
                                                 <th scope="row"><?php echo $countTable  ?></th>
                                                 <td><?php echo $vehicle['vehicle_num'] ?></td>
                                                 <td><?php echo $vehicle['Brand'] ?></td>
@@ -163,6 +163,38 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
 
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <img class="modal-img" id="modal-image-overall" src="../public/img/Vehicles/134-6563-inside.jpg" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="modal-img" id="modal-image-inside" src="../public/img/Vehicles/134-6563-inside.jpg" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -170,11 +202,24 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
     <script src="../public/js/form-validstion.js"></script>
 
-    
+
     <script type="module">
-        import { easeFilterDataTable } from '../public/js/table-filter.js';
+        import {
+            easeFilterDataTable
+        } from '../public/js/table-filter.js';
         easeFilterDataTable('searchInput', 'dataTable');
-        
+    </script>
+
+    <script>
+        const table = document.getElementById('dataTable');
+        let modalImageOverall = document.getElementById('modal-image-overall');
+        let modalImageInside = document.getElementById('modal-image-inside');
+        const modalTitle = document.getElementById('staticBackdropLabel');
+        function cellClickFire(x) {
+            modalImageOverall.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-inside.jpg`;
+            modalImageInside.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-overall.jpg`;
+            modalTitle.innerHTML = table.rows[x.rowIndex].cells[1].innerHTML;
+        }
     </script>
 </body>
 
