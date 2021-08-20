@@ -21,5 +21,10 @@ body{
     .w-85{
         width: 100%;
     }
+
+    .modal-img{
+        width: 9rem;
+        height: 6rem;
+    }
 }
 

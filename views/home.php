@@ -20,7 +20,7 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
 
     <div class="vh-100 w-100 d-flex">
         <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden bg-info">
-
+            
         </div>
 
         <div class="vh-100 w-85 overflow-y-scroll">
@@ -215,6 +215,7 @@ $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
         let modalImageOverall = document.getElementById('modal-image-overall');
         let modalImageInside = document.getElementById('modal-image-inside');
         const modalTitle = document.getElementById('staticBackdropLabel');
+
         function cellClickFire(x) {
             modalImageOverall.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-inside.jpg`;
             modalImageInside.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-overall.jpg`;
