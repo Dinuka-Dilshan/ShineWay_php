@@ -1,24 +1,24 @@
 <?php
 
-    session_start();
+session_start();
 
-    require('./partials/header.php');
+require('./partials/header.php');
 
-    $userList = $_SESSION['userList'];
+$userList = $_SESSION['userList'];
 
-    $error = -1;// -1 = no message to display 1 = successfull  0 = error
+$error = -1; // -1 = no message to display 1 = successfull  0 = error
 
-    if (isset($_SESSION['userEditStatus'])) {
-        if($_SESSION['userEditStatus'] == 1){
-            $error = 1;
-        }else if($_SESSION['userEditStatus'] == 0){
-            $error = 0;
-        }else{
-            $error = -1;
-        }
+if (isset($_SESSION['userEditStatus'])) {
+    if ($_SESSION['userEditStatus'] == 1) {
+        $error = 1;
+    } else if ($_SESSION['userEditStatus'] == 0) {
+        $error = 0;
+    } else {
+        $error = -1;
+    }
 
-        unset($_SESSION['userEditStatus']);
-    } 
+    unset($_SESSION['userEditStatus']);
+}
 ?>
 
 
@@ -140,11 +140,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
+                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input pattern="[A-Za-z\s]{2,}" id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
+                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid name</div>
@@ -167,7 +167,7 @@
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
+                                            <input pattern="^(?![ .]+$)[a-zA-Z .,]*" name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -190,10 +190,10 @@
 
 
                                 <!-- Number input -->
-                                <div class="row mb-4">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input name="edit-phone" id="Modal-edit-phone" type="number" id="form6Example6" class="form-control" required />
+                                            <input pattern="[0-9]{10}" name="edit-phone" id="Modal-edit-phone" type="text" id="form6Example6" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Phone</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid phone number</div>
@@ -202,19 +202,29 @@
                                 </div>
 
 
-                                <div class="bg-white mb-4 mt-1">
-                                    <label class="form-label bg-white " for="customFile">Image</label>
-                                    <input name="edit-image" type="file" class="form-control bg-white " id="customFile" />
+                                <div class="row mb-4">
+                                    <div class="col-12 ">
+                                        <div class="bg-white ">
+                                            <label class="form-label bg-white mb-0 pb-0" for="customFile">Image</label>
+                                            <input name="edit-image" type="file" class="form-control bg-white " id="customFile" accept="image/*" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-12 mt-2">
+                                        <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">User Type</label>
+                                        <select name="edit-userType" class="bg-white  form-control " id="typeSelect" required>
+                                            <option selected value="Admin"> Admin </option>
+                                            <option value="User"> User</option>
+                                        </select>
+                                    </div>
+
                                 </div>
 
-                                <select name="edit-userType" class="bg-white  form-control mb-4" required>
-                                    <option selected value="Admin">User Type - Admin </option>
-                                    <option value="User">User Type - User</option>
-                                </select>
 
                                 <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block mb-4">Update User</button>
+                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block mb-2">Update User</button>
                             </form>
                         </div>
                     </div>
@@ -326,7 +336,7 @@
     <?php
     if ($error == "0") {
         echo "document.getElementById('btnErrorModal').click();";
-    } else if($error == "1"){
+    } else if ($error == "1") {
         echo "document.getElementById('btnModal').click();";
     }
     ?>
