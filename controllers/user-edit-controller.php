@@ -12,14 +12,16 @@
         $NIC = $_POST['edit-NIC'];
         $userType = $_POST['edit-userType'];
 
-        $query = "UPDATE `user` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address'  WHERE `ID` = '$ID'";
+        $query = "UPDATE `users` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address'  WHERE `ID` = '$ID'";
 
         $result = $connection->query($query);
+
         if($result){
-            $_SESSION['userEditStatus'] = true;
+            $_SESSION['userEditStatus'] = 1;
         }else{
-            $_SESSION['userEditStatus'] = false;
+            $_SESSION['userEditStatus'] = 0;
         }
+        
 
     }
 

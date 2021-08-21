@@ -1,22 +1,24 @@
 <?php
 
-session_start();
+    session_start();
 
-require('./partials/header.php');
+    require('./partials/header.php');
 
-$userList = $_SESSION['userList'];
+    $userList = $_SESSION['userList'];
 
-if(isset($_SESSION['userEditStatus'])){
-    if($_SESSION['userEditStatus']){
-        echo "done";
+    $error = -1;// -1 = no message to display 1 = successfull  0 = error
+
+    if (isset($_SESSION['userEditStatus'])) {
+        if($_SESSION['userEditStatus'] == 1){
+            $error = 1;
+        }else if($_SESSION['userEditStatus'] == 0){
+            $error = 0;
+        }else{
+            $error = -1;
+        }
+
         unset($_SESSION['userEditStatus']);
-    }else{
-        echo "error";
-        unset($_SESSION['userEditStatus']);
-    }
-}
-
-
+    } 
 ?>
 
 
@@ -77,7 +79,7 @@ if(isset($_SESSION['userEditStatus'])){
                                 </form>
                                 <!--<form action="../controllers/user-edit-controller.php" method="post">-->
                                 <td>
-                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2"   type="button" class="btn btn-secondary btn-sm px-3">
+                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class="btn btn-secondary btn-sm px-3">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
                                 </td>
@@ -131,7 +133,7 @@ if(isset($_SESSION['userEditStatus'])){
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="Modal-edit-title" >Modal title</h5>
+                <h5 class="modal-title" id="Modal-edit-title">Modal title</h5>
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -142,7 +144,7 @@ if(isset($_SESSION['userEditStatus'])){
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
+                                            <input pattern="[A-Za-z\s]{2,}" id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid name</div>
@@ -153,7 +155,7 @@ if(isset($_SESSION['userEditStatus'])){
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-nic" name="edit-NIC"  type="text" id="form6Example2" class="form-control" required />
+                                            <input id="Modal-edit-nic" name="edit-NIC" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -178,7 +180,7 @@ if(isset($_SESSION['userEditStatus'])){
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="edit-email" id="Modal-edit-email"  type="email" id="form6Example5" class="form-control" required />
+                                            <input name="edit-email" id="Modal-edit-email" type="email" id="form6Example5" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Email</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Email</div>
@@ -228,8 +230,67 @@ if(isset($_SESSION['userEditStatus'])){
     </div>
 </div>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalMessage" id="btnModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error-->
+<div class="modal fade" id="modalMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-success " id="staticBackdropLabel"> Successfully Updated!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalErrorMessage" id="btnErrorModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error-->
+<div class="modal fade" id="modalErrorMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-danger " id="staticBackdropLabel"> Cannot Update!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -260,6 +321,15 @@ if(isset($_SESSION['userEditStatus'])){
         modalEditTitle.innerHTML = "Edit User: " + table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditUserID.value = table.rows[x.rowIndex].cells[7].innerHTML;
     }
+
+
+    <?php
+    if ($error == "0") {
+        echo "document.getElementById('btnErrorModal').click();";
+    } else if($error == "1"){
+        echo "document.getElementById('btnModal').click();";
+    }
+    ?>
 </script>
 
 <!-- Filter -->
