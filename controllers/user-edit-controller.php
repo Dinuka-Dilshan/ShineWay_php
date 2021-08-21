@@ -4,19 +4,25 @@
     require("../config/db.php");
 
     if(isset($_POST['submit-edit-user'])){
-        $ID = $_POST['submit-delete-user'];
-        $query = "DELETE FROM `users` WHERE `ID` = $ID";
+        $ID = $_POST['submit-edit-userID'];
+        $name = $_POST['edit-name'];
+        $email = $_POST['edit-email'];
+        $phone = $_POST['edit-phone'];
+        $address = $_POST['edit-address'];
+        $NIC = $_POST['edit-NIC'];
+        $userType = $_POST['edit-userType'];
+
+        $query = "UPDATE `user` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address'  WHERE `ID` = '$ID'";
 
         $result = $connection->query($query);
+        if($result){
+            $_SESSION['userEditStatus'] = true;
+        }else{
+            $_SESSION['userEditStatus'] = false;
+        }
+
     }
 
-    $query = "SELECT  `ID`,`NIC`, `name`, `user_type`, `email`, `Telephone`, `Address` FROM `users` ";
+    header('Location: user-view-controller.php');
 
-    $result = $connection->query($query);
-
-    $userList = $result->fetch_all(MYSQLI_ASSOC);
-
-    $_SESSION['userList'] = $userList;
-
-    header('Location: ../views/user-view.php');
 ?>

@@ -6,7 +6,15 @@ require('./partials/header.php');
 
 $userList = $_SESSION['userList'];
 
-
+if(isset($_SESSION['userEditStatus'])){
+    if($_SESSION['userEditStatus']){
+        echo "done";
+        unset($_SESSION['userEditStatus']);
+    }else{
+        echo "error";
+        unset($_SESSION['userEditStatus']);
+    }
+}
 
 
 ?>
@@ -59,6 +67,7 @@ $userList = $_SESSION['userList'];
                                 <td><?php echo $user['email'] ?></td>
                                 <td><?php echo $user['Telephone'] ?></td>
                                 <td><?php echo $user['Address'] ?></td>
+                                <td class="d-none"><?php echo $user['ID'] ?></td>
                                 <form action="../controllers/user-view-controller.php" method="post">
                                     <td>
                                         <button name="submit-delete-user" value="<?php echo $user['ID'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
@@ -68,7 +77,7 @@ $userList = $_SESSION['userList'];
                                 </form>
                                 <!--<form action="../controllers/user-edit-controller.php" method="post">-->
                                 <td>
-                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2" name="submit-edit-user" value="<?php echo $user['ID'] ?>" type="submit" class="btn btn-secondary btn-sm px-3">
+                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2"   type="button" class="btn btn-secondary btn-sm px-3">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
                                 </td>
@@ -129,11 +138,11 @@ $userList = $_SESSION['userList'];
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form class=" needs-validation" novalidate>
+                            <form class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-name" type="text" id="form6Example1" class="form-control" required />
+                                            <input id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid name</div>
@@ -144,7 +153,7 @@ $userList = $_SESSION['userList'];
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-nic" type="text" id="form6Example2" class="form-control" required />
+                                            <input id="Modal-edit-nic" name="edit-NIC"  type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -156,7 +165,7 @@ $userList = $_SESSION['userList'];
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
+                                            <input name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -169,7 +178,7 @@ $userList = $_SESSION['userList'];
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input id="Modal-edit-email"  type="email" id="form6Example5" class="form-control" required />
+                                            <input name="edit-email" id="Modal-edit-email"  type="email" id="form6Example5" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Email</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Email</div>
@@ -182,7 +191,7 @@ $userList = $_SESSION['userList'];
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-phone" type="number" id="form6Example6" class="form-control" required />
+                                            <input name="edit-phone" id="Modal-edit-phone" type="number" id="form6Example6" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Phone</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid phone number</div>
@@ -193,16 +202,17 @@ $userList = $_SESSION['userList'];
 
                                 <div class="bg-white mb-4 mt-1">
                                     <label class="form-label bg-white " for="customFile">Image</label>
-                                    <input type="file" class="form-control bg-white " id="customFile" />
+                                    <input name="edit-image" type="file" class="form-control bg-white " id="customFile" />
                                 </div>
 
-                                <select class="bg-white  form-control mb-4" required>
-                                    <option selected value="1">User Type - Admin </option>
-                                    <option value="1">User Type - User</option>
+                                <select name="edit-userType" class="bg-white  form-control mb-4" required>
+                                    <option selected value="Admin">User Type - Admin </option>
+                                    <option value="User">User Type - User</option>
                                 </select>
 
+                                <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">Update User</button>
+                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block mb-4">Update User</button>
                             </form>
                         </div>
                     </div>
@@ -237,6 +247,7 @@ $userList = $_SESSION['userList'];
     const modalEditPhone = document.getElementById('Modal-edit-phone');
     const modalEditEmail = document.getElementById('Modal-edit-email');
     const modalEditTitle = document.getElementById('Modal-edit-title');
+    const modalEditUserID = document.getElementById('submit-edit-userID');
 
     function cellClickFire(x) {
         userImage.src = `../public/img/Users/${table.rows[x.rowIndex].cells[4].innerHTML}.jpg`;
@@ -247,6 +258,7 @@ $userList = $_SESSION['userList'];
         modalEditPhone.value = table.rows[x.rowIndex].cells[5].innerHTML;
         modalEditEmail.value = table.rows[x.rowIndex].cells[4].innerHTML;
         modalEditTitle.innerHTML = "Edit User: " + table.rows[x.rowIndex].cells[1].innerHTML;
+        modalEditUserID.value = table.rows[x.rowIndex].cells[7].innerHTML;
     }
 </script>
 
