@@ -8,16 +8,16 @@ $ownerList = $_SESSION['ownerList'];
 
 $error = -1; // -1 = no message to display 1 = successfull  0 = error
 
-if (isset($_SESSION['userEditStatus'])) {
-    if ($_SESSION['userEditStatus'] == 1) {
+if (isset($_SESSION['ownerEditStatus'])) {
+    if ($_SESSION['ownerEditStatus'] == 1) {
         $error = 1;
-    } else if ($_SESSION['userEditStatus'] == 0) {
+    } else if ($_SESSION['ownerEditStatus'] == 0) {
         $error = 0;
     } else {
         $error = -1;
     }
 
-    unset($_SESSION['userEditStatus']);
+    unset($_SESSION['ownerEditStatus']);
 }
 ?>
 
@@ -62,7 +62,7 @@ if (isset($_SESSION['userEditStatus'])) {
                         <!--Owner_NIC`, `Salute`, `Owner_NIC`, `Tel_num`, `Owner_Email`, `Owner_Address-->
                         <?php $countTable = 1; ?>
                         <?php foreach ($ownerList as $owner) : ?>
-                            <tr onclick="cellClickFire(this)" >
+                            <tr onclick="cellClickFire(this)">
                                 <th scope="row"><?php echo $countTable  ?></th>
                                 <td><?php echo $owner['Owner_name'] ?></td>
                                 <td><?php echo $owner['Owner_NIC'] ?></td>
@@ -113,9 +113,9 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form  class=" needs-validation" novalidate action="../controllers/owner-edit-controller.php" method="POST">
+                            <form class=" needs-validation" novalidate action="../controllers/owner-edit-controller.php" method="POST">
                                 <div class="row mb-4">
-                                    <div class="col-12">
+                                    <div class="col-12 mt-2">
                                         <div class="form-outline">
                                             <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-name" name="name" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
@@ -128,7 +128,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-nic" name="NIC" type="text" id="form6Example2" class="form-control" required />
+                                            <input readonly id="Modal-edit-nic" name="NIC" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -139,7 +139,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="address" id="Modal-edit-address" type="text"  class="form-control" required />
+                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="address" id="Modal-edit-address" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -152,7 +152,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="email" id="Modal-edit-email" type="email"  class="form-control" required />
+                                            <input name="email" id="Modal-edit-email" type="email" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Email</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Email</div>
@@ -173,15 +173,8 @@ if (isset($_SESSION['userEditStatus'])) {
                                     </div>
                                 </div>
 
-
-                                <div class="row mb-4">
-                                    
-                                </div>
-
-
-                                
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-owner" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
+                                <button type="submit" name="submit-edit-owner" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Vehicle Owner</button>
                             </form>
                         </div>
                     </div>
@@ -282,7 +275,7 @@ if (isset($_SESSION['userEditStatus'])) {
         modalEditAddress.value = table.rows[x.rowIndex].cells[6].innerHTML;
         modalEditPhone.value = table.rows[x.rowIndex].cells[5].innerHTML;
         modalEditEmail.value = table.rows[x.rowIndex].cells[4].innerHTML;
-        modalEditTitle.innerHTML = "Edit User: " + table.rows[x.rowIndex].cells[1].innerHTML;
+        modalEditTitle.innerHTML = "Edit Owner: " + table.rows[x.rowIndex].cells[1].innerHTML;
     }
 
 
@@ -307,4 +300,3 @@ if (isset($_SESSION['userEditStatus'])) {
 <?php
 require('./partials/footer.php');
 ?>
-
