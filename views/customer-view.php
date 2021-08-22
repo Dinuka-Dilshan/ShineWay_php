@@ -170,7 +170,7 @@ if (isset($_SESSION['customerEditStatus'])) {
 
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input  name="customer-edit-license" id="license" type="text" class="form-control" required />
+                                            <input pattern="^[A-Z]{1}[1-9]{7,8}[A-Z]{0,1}$" name="customer-edit-license" id="license" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example6">License</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid licence number</div>
