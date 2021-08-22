@@ -52,7 +52,7 @@ if (isset($_SESSION['userEditStatus'])) {
                             <th class="fs-6 fw-bold" scope="col">#</th>
                             <th class="fs-6 fw-bold" scope="col">Name</th>
                             <th class="fs-6 fw-bold" scope="col">NIC</th>
-                            <th class="fs-6 fw-bold" scope="col">Salute</th>
+                            <th class="fs-6 fw-bold d-none" scope="col">Salute</th>
                             <th class="fs-6 fw-bold" scope="col">Email</th>
                             <th class="fs-6 fw-bold" scope="col">Telephone</th>
                             <th class="fs-6 fw-bold" scope="col">Address</th>
@@ -62,11 +62,11 @@ if (isset($_SESSION['userEditStatus'])) {
                         <!--Owner_NIC`, `Salute`, `Owner_NIC`, `Tel_num`, `Owner_Email`, `Owner_Address-->
                         <?php $countTable = 1; ?>
                         <?php foreach ($ownerList as $owner) : ?>
-                            <tr onclick="cellClickFire(this)" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
+                            <tr onclick="cellClickFire(this)" >
                                 <th scope="row"><?php echo $countTable  ?></th>
                                 <td><?php echo $owner['Owner_name'] ?></td>
                                 <td><?php echo $owner['Owner_NIC'] ?></td>
-                                <td><?php echo $owner['Salute'] ?></td>
+                                <td class="d-none"><?php echo $owner['Salute'] ?></td>
                                 <td><?php echo $owner['Owner_Email'] ?></td>
                                 <td><?php echo $owner['Tel_num'] ?></td>
                                 <td><?php echo $owner['Owner_Address'] ?></td>
@@ -97,34 +97,6 @@ if (isset($_SESSION['userEditStatus'])) {
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 text-align-center img-thumbnail d-flex justify-content-center">
-                            <img class="modal-img" id="user-image" src="../public/img/Users/jadinukadilshan@gmail.com.jpg" alt="Cannot Load Image">
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -141,11 +113,11 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
+                            <form  class=" needs-validation" novalidate action="../controllers/owner-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
+                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-name" name="name" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid name</div>
@@ -156,7 +128,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-nic" name="edit-NIC" type="text" id="form6Example2" class="form-control" required />
+                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-nic" name="NIC" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -167,7 +139,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
+                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="address" id="Modal-edit-address" type="text"  class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -180,7 +152,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="edit-email" id="Modal-edit-email" type="email" id="form6Example5" class="form-control" required />
+                                            <input name="email" id="Modal-edit-email" type="email"  class="form-control" required />
                                             <label class="form-label" for="form6Example5">Email</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Email</div>
@@ -193,7 +165,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="edit-phone" id="Modal-edit-phone" type="text" id="form6Example6" class="form-control" required />
+                                            <input pattern="[0-9]{10}" name="phone" id="Modal-edit-phone" type="text" id="form6Example6" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Phone</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid phone number</div>
@@ -203,28 +175,13 @@ if (isset($_SESSION['userEditStatus'])) {
 
 
                                 <div class="row mb-4">
-                                    <div class="col-12 ">
-                                        <div class="bg-white ">
-                                            <label class="form-label bg-white mb-0 pb-0" for="customFile">Image</label>
-                                            <input name="edit-image" type="file" class="form-control bg-white " id="customFile" accept="image/*" />
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-12 mt-2">
-                                        <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">User Type</label>
-                                        <select name="edit-userType" class="bg-white  form-control " id="typeSelect" required>
-                                            <option selected value="Admin"> Admin </option>
-                                            <option value="User"> User</option>
-                                        </select>
-                                    </div>
-
+                                    
                                 </div>
 
 
-                                <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
+                                
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
+                                <button type="submit" name="submit-edit-owner" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
                             </form>
                         </div>
                     </div>
@@ -310,7 +267,6 @@ if (isset($_SESSION['userEditStatus'])) {
 <!-- Modal image set -->
 <script>
     const table = document.getElementById('dataTable');
-    let userImage = document.getElementById('user-image');
     const modalTitle = document.getElementById('staticBackdropLabel');
     const modalEditName = document.getElementById('Modal-edit-name');
     const modalEditNIC = document.getElementById('Modal-edit-nic');
@@ -318,10 +274,8 @@ if (isset($_SESSION['userEditStatus'])) {
     const modalEditPhone = document.getElementById('Modal-edit-phone');
     const modalEditEmail = document.getElementById('Modal-edit-email');
     const modalEditTitle = document.getElementById('Modal-edit-title');
-    const modalEditUserID = document.getElementById('submit-edit-userID');
 
     function cellClickFire(x) {
-        userImage.src = `../public/img/Users/${table.rows[x.rowIndex].cells[4].innerHTML}.jpg`;
         modalTitle.innerHTML = table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditName.value = table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditNIC.value = table.rows[x.rowIndex].cells[2].innerHTML;
@@ -329,7 +283,6 @@ if (isset($_SESSION['userEditStatus'])) {
         modalEditPhone.value = table.rows[x.rowIndex].cells[5].innerHTML;
         modalEditEmail.value = table.rows[x.rowIndex].cells[4].innerHTML;
         modalEditTitle.innerHTML = "Edit User: " + table.rows[x.rowIndex].cells[1].innerHTML;
-        modalEditUserID.value = table.rows[x.rowIndex].cells[7].innerHTML;
     }
 
 
