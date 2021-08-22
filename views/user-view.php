@@ -155,7 +155,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-nic" name="edit-NIC" type="text" id="form6Example2" class="form-control" required />
+                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-nic" name="edit-NIC" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -163,11 +163,10 @@ if (isset($_SESSION['userEditStatus'])) {
                                     </div>
                                 </div>
 
-
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![ .]+$)[a-zA-Z .,]*" name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
+                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -224,7 +223,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
                                 <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block mb-2">Update User</button>
+                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
                             </form>
                         </div>
                     </div>
@@ -354,3 +353,4 @@ if (isset($_SESSION['userEditStatus'])) {
 <?php
 require('./partials/footer.php');
 ?>
+
