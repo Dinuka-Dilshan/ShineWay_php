@@ -46,7 +46,7 @@ if (isset($_SESSION['customerAddStatus'])) {
         <div class="col-12 col-lg-6">
             <div class="card border shadow-0 my-3 ">
                 <div class="card-header fs-3">
-                    ADD USER
+                    ADD CUSTOMER
                 </div>
                 <div class="card-body">
                     <form  class=" needs-validation" novalidate action="../controllers/customer-add-controller.php" method="POST">
