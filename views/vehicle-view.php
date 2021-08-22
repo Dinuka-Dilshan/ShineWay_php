@@ -154,7 +154,7 @@ if (isset($_SESSION['ownerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input id="Modal-edit-vehicle-number" name="vehicleNumber" type="text" id="form6Example1" class="form-control" required />
+                                            <input pattern="^[A-Z]{2,3}[-][0-9]{4}$" readonly id="Modal-edit-vehicle-number" name="vehicleNumber" type="text" id="form6Example1" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Vehicle Number</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Vehicle Number</div>
@@ -165,7 +165,7 @@ if (isset($_SESSION['ownerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input  id="Modal-edit-brand" name="Brand" type="text" id="form6Example2" class="form-control" required />
+                                            <input  pattern="[a-zA-Z]{2,}" id="Modal-edit-brand" name="Brand" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">Brand</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Brand</div>
@@ -174,7 +174,7 @@ if (isset($_SESSION['ownerEditStatus'])) {
                                 
                                     <div class="col-6">
                                         <div class="form-outline ">
-                                            <input  name="model" id="Modal-edit-model" type="text" id="form6Example4" class="form-control" required />
+                                            <input  pattern="[a-zA-Z0-9 -]{2,}"  name="model" id="Modal-edit-model" type="text" id="form6Example4" class="form-control" required />
                                             <label class="form-label" for="form6Example4">model</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Model</div>
@@ -187,7 +187,7 @@ if (isset($_SESSION['ownerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="NIC" id="Modal-edit-NIC" type="text" class="form-control" required />
+                                            <input readonly name="NIC" id="Modal-edit-NIC" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Owner NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -200,7 +200,7 @@ if (isset($_SESSION['ownerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input  name="dailyPrice" id="Modal-edit-daily-price" type="number" id="form6Example6" class="form-control" required />
+                                            <input name="dailyPrice" id="Modal-edit-daily-price" type="number" id="form6Example6" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Daily Price</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid price</div>
