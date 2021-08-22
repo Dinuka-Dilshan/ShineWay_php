@@ -4,7 +4,7 @@ session_start();
 
 require('./partials/header.php');
 
-$userList = $_SESSION['userList'];
+$vehicleList = $_SESSION['vehicleList'];
 
 $error = -1; // -1 = no message to display 1 = successfull  0 = error
 
@@ -31,7 +31,7 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row justify-content-between">
                         <div class="col-12 col-lg-4 m-1 fw-bold fs-5 text-white">
-                            Users
+                            Vehicles
                         </div>
 
                         <div class="col-12 col-lg-3 d-flex align-items-center">
@@ -50,26 +50,35 @@ if (isset($_SESSION['userEditStatus'])) {
                     <thead>
                         <tr>
                             <th class="fs-6 fw-bold" scope="col">#</th>
-                            <th class="fs-6 fw-bold" scope="col">Name</th>
-                            <th class="fs-6 fw-bold" scope="col">NIC</th>
-                            <th class="fs-6 fw-bold" scope="col">User Type</th>
-                            <th class="fs-6 fw-bold" scope="col">Email</th>
-                            <th class="fs-6 fw-bold" scope="col">Telephone</th>
-                            <th class="fs-6 fw-bold" scope="col">Address</th>
+                            <th class="fs-6 fw-bold" scope="col">Vehicle No:</th>
+                            <th class="fs-6 fw-bold" scope="col">Brand</th>
+                            <th class="fs-6 fw-bold" scope="col">Model</th>
+                            <th class="fs-6 fw-bold" scope="col">type</th>
+                            <th class="fs-6 fw-bold" scope="col">Owner NIC:</th>
+                            <!-- <th class="fs-6 fw-bold" scope="col">Registered Date:</th> -->
+                            <!-- <th class="fs-6 fw-bold" scope="col">Owner Conditions</th> -->
+                            <th class="fs-6 fw-bold" scope="col">Daily price</th>
+                            <th class="fs-6 fw-bold" scope="col">Monthly Price</th>
+                            <th class="fs-6 fw-bold" scope="col">weekly Price</th>
+                            <th class="fs-6 fw-bold" scope="col">Owner Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $countTable = 1; ?>
-                        <?php foreach ($userList as $user) : ?>
+                        <?php foreach ($vehicleList as $vehicle) : ?>
                             <tr onclick="cellClickFire(this)" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
                                 <th scope="row"><?php echo $countTable  ?></th>
-                                <td><?php echo $user['name'] ?></td>
-                                <td><?php echo $user['NIC'] ?></td>
-                                <td><?php echo $user['user_type'] ?></td>
-                                <td><?php echo $user['email'] ?></td>
-                                <td><?php echo $user['Telephone'] ?></td>
-                                <td><?php echo $user['Address'] ?></td>
-                                <td class="d-none"><?php echo $user['ID'] ?></td>
+                                <td><?php echo $vehicle['Vehicle_num'] ?></td>
+                                <td><?php echo $vehicle['Brand'] ?></td>
+                                <td><?php echo $vehicle['Model'] ?></td>
+                                <td><?php echo $vehicle['Type'] ?></td>
+                                <td><?php echo $vehicle['Owner_NIC'] ?></td>
+                                <!-- <td><?php echo $vehicle['Reg_Date'] ?></td> -->
+                                <!-- <td><?php echo $vehicle['Owner_Condi'] ?></td> -->
+                                <td><?php echo $vehicle['Daily_price'] ?></td>
+                                <td><?php echo $vehicle['Weekly_price'] ?></td>
+                                <td><?php echo $vehicle['Monthly_price'] ?></td>
+                                <td><?php echo $vehicle['Owner_payment'] ?></td>
                                 <form action="../controllers/user-view-controller.php" method="post">
                                     <td>
                                         <button name="submit-delete-user" value="<?php echo $user['ID'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
@@ -98,7 +107,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
@@ -108,7 +117,8 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 text-align-center img-thumbnail d-flex justify-content-center">
-                            <img class="modal-img" id="user-image" src="../public/img/Users/jadinukadilshan@gmail.com.jpg" alt="Cannot Load Image">
+                            <img class="modal-img" id="vehicle-image" src="../public/img/Vehicles/" alt="Cannot Load Image">
+                            <img class="modal-img" id="vehicle-image-overall" src="../public/img/Vehicles/" alt="Cannot Load Image">
                         </div>
                     </div>
 
@@ -309,7 +319,8 @@ if (isset($_SESSION['userEditStatus'])) {
 <!-- Modal image set -->
 <script>
     const table = document.getElementById('dataTable');
-    let userImage = document.getElementById('user-image');
+    let vehicleImage = document.getElementById('vehicle-image');
+    let vehicleImageOverall = document.getElementById('vehicle-image-overall');
     const modalTitle = document.getElementById('staticBackdropLabel');
     const modalEditName = document.getElementById('Modal-edit-name');
     const modalEditNIC = document.getElementById('Modal-edit-nic');
@@ -320,7 +331,8 @@ if (isset($_SESSION['userEditStatus'])) {
     const modalEditUserID = document.getElementById('submit-edit-userID');
 
     function cellClickFire(x) {
-        userImage.src = `../public/img/Users/${table.rows[x.rowIndex].cells[4].innerHTML}.jpg`;
+        vehicleImage.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-inside.jpg`;
+        vehicleImageOverall.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-overall.jpg`;
         modalTitle.innerHTML = table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditName.value = table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditNIC.value = table.rows[x.rowIndex].cells[2].innerHTML;
