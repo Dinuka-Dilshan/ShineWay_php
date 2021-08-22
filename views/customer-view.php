@@ -109,7 +109,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="name" name="edit-name" type="text" class="form-control" required />
+                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="name" name="customer-edit-name" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid name</div>
@@ -120,7 +120,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="edit-NIC" type="text" class="form-control" required />
+                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="customer-edit-NIC" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -131,7 +131,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="address" id="address" type="text" class="form-control" required />
+                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="customer-edit-address" id="address" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -144,7 +144,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="edit-email" id="email" type="email" class="form-control" required />
+                                            <input name="customer-edit-email" id="email" type="email" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Email</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Email</div>
@@ -157,7 +157,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="edit-phone" id="phone" type="text" class="form-control" required />
+                                            <input pattern="[0-9]{10}" name="customer-edit-phone" id="phone" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Phone</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid phone number</div>
@@ -170,7 +170,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input  name="license" id="license" type="text" class="form-control" required />
+                                            <input  name="customer-edit-license" id="license" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example6">License</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid licence number</div>
