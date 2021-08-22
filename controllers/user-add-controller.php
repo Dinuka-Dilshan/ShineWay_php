@@ -13,9 +13,14 @@ if (isset($_POST['submit-add-user'])) {
 
     $emailCheck = "SELECT  `email` FROM `users` WHERE `email` = '$email'";
     $result = $connection->query($emailCheck);
-
-    if($result){
+    if($result->num_rows != 0){
         $_SESSION['userAddStatus'] = 2;
+        $_SESSION['faildToAddName'] = $_POST['name'];
+        $_SESSION['faildToAddEmail'] = $_POST['email'];
+        $_SESSION['faildToAddPhone'] = $_POST['phone'];
+        $_SESSION['faildToAddAddress'] = $_POST['address'];
+        $_SESSION['faildToAddNIC'] = $_POST['NIC'];
+        $_SESSION['faildToAddUserType'] = $_POST['userType'];
     }else{
         $query = "INSERT INTO `users`(`NIC`, `name`, `user_type`, `email`, `Telephone`, `Address`) VALUES ('$NIC','$name','$userType','$email','$phone','$address')";
 
@@ -36,10 +41,9 @@ if (isset($_POST['submit-add-user'])) {
         }
     }
 
-
    
     
 }
-
+    //unset($_POST);
     header('Location: ../views/user-add.php');
 ?>

@@ -5,6 +5,8 @@ session_start();
 require('./partials/header.php');
 
 
+$scriptSetValues;
+
 $error = -1; // -1 = no message to display 1 = successfull  0 = error 2 = email exists
 
 if (isset($_SESSION['userAddStatus'])) {
@@ -14,6 +16,20 @@ if (isset($_SESSION['userAddStatus'])) {
         $error = 0;
     } else if($_SESSION['userAddStatus'] == 2){
         $error = 2;
+        $name =  $_SESSION['faildToAddName'] ;
+        $email = $_SESSION['faildToAddEmail'] ;
+        $phone =  $_SESSION['faildToAddPhone'] ;
+        $address =  $_SESSION['faildToAddAddress'];
+        $NIC = $_SESSION['faildToAddNIC'] ;
+        $userType = $_SESSION['faildToAddUserType'] ;
+        $scriptSetValues = "setFiledsAfterFail('$name', '$phone', '$email', '$address', '$NIC');";
+        unset($_SESSION['faildToAddName']);
+        unset($_SESSION['faildToAddEmail'] );
+        unset( $_SESSION['faildToAddPhone']);
+        unset($_SESSION['faildToAddAddress']);
+        unset($_SESSION['faildToAddNIC']);
+        unset($_SESSION['faildToAddUserType']);
+            
     }else{
         $error = -1;
     }
@@ -38,7 +54,7 @@ if (isset($_SESSION['userAddStatus'])) {
                         <div class="row mb-4">
                             <div class="col-12">
                                 <div class="form-outline">
-                                    <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="name" name="name" type="text" id="form6Example1" class="form-control" required />
+                                    <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="name" name="name" type="text"  class="form-control" required />
                                     <label class="form-label" for="form6Example1">Name</label>
                                     <div class="valid-feedback">Looks good!</div>
                                     <div class="invalid-feedback">Enter a valid name</div>
@@ -49,7 +65,7 @@ if (isset($_SESSION['userAddStatus'])) {
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline">
-                                    <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="NIC" type="text" id="form6Example2" class="form-control" required />
+                                    <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="NIC" type="text"  class="form-control" required />
                                     <label class="form-label" for="form6Example2">NIC</label>
                                     <div class="valid-feedback">Looks good!</div>
                                     <div class="invalid-feedback">Enter a valid NIC</div>
@@ -60,7 +76,7 @@ if (isset($_SESSION['userAddStatus'])) {
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline ">
-                                    <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="address" id="address" type="text" id="form6Example4" class="form-control" required />
+                                    <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="address" id="address" type="text"  class="form-control" required />
                                     <label class="form-label" for="form6Example4">Address</label>
                                     <div class="valid-feedback ">Looks good!</div>
                                     <div class="invalid-feedback ">Enter a valid Address</div>
@@ -229,6 +245,17 @@ if (isset($_SESSION['userAddStatus'])) {
 <script src="../public/js/form-validstion.js"></script>
 
 <script>
+    function getByID(elementID){
+        return document.getElementById(elementID);
+    }
+
+    function setFiledsAfterFail(name,phone,email,address,nic){
+        getByID('name').value = name;
+        getByID('phone').value = phone;
+        getByID('email').value = email;
+        getByID('address').value = address;
+        getByID('nic').value = nic;
+    }
     <?php
         if ($error == "0") {
             echo "document.getElementById('btnErrorModal').click();";
@@ -236,8 +263,12 @@ if (isset($_SESSION['userAddStatus'])) {
             echo "document.getElementById('btnModal').click();";
         } else if($error == "2") {
             echo "document.getElementById('btnErrorEmailModal').click();";
+            echo $scriptSetValues;
+            
         }
     ?>
+
+    
 </script>
 
 <?php
