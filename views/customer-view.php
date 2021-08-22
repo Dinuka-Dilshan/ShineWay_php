@@ -8,16 +8,16 @@ $customerList = $_SESSION['customerList'];
 
 $error = -1; // -1 = no message to display 1 = successfull  0 = error
 
-if (isset($_SESSION['userEditStatus'])) {
-    if ($_SESSION['userEditStatus'] == 1) {
+if (isset($_SESSION['customerEditStatus'])) {
+    if ($_SESSION['customerEditStatus'] == 1) {
         $error = 1;
-    } else if ($_SESSION['userEditStatus'] == 0) {
+    } else if ($_SESSION['customerEditStatus'] == 0) {
         $error = 0;
     } else {
         $error = -1;
     }
 
-    unset($_SESSION['userEditStatus']);
+    unset($_SESSION['customerEditStatus']);
 }
 ?>
 
@@ -105,7 +105,7 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
+                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/customer-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
@@ -182,7 +182,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 </div>
 
 
-                                <input type="hidden" name="submit-edit-customerID" id="submit-edit-customerID" value="">
+                                
                                 <!-- Submit button -->
                                 <button type="submit" name="submit-edit-customer" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Customer</button>
                             </form>
@@ -195,6 +195,68 @@ if (isset($_SESSION['userEditStatus'])) {
                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
                     Close
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalMessage" id="btnModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error-->
+<div class="modal fade" id="modalMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-success " id="staticBackdropLabel"> Successfully Updated!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalErrorMessage" id="btnErrorModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error-->
+<div class="modal fade" id="modalErrorMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-danger " id="staticBackdropLabel"> Cannot Update!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -217,7 +279,6 @@ if (isset($_SESSION['userEditStatus'])) {
     const modalEditPhone = document.getElementById('phone');
     const modalEditEmail = document.getElementById('email');
     const modalEditTitle = document.getElementById('Modal-edit-title');
-    const modalEditCustomerID = document.getElementById('submit-edit-customerID');
     const modalEditLicense = document.getElementById('license');
 
     function cellClickFire(x) {
@@ -227,7 +288,6 @@ if (isset($_SESSION['userEditStatus'])) {
         modalEditPhone.value = table.rows[x.rowIndex].cells[5].innerHTML;
         modalEditEmail.value = table.rows[x.rowIndex].cells[4].innerHTML;
         modalEditTitle.innerHTML = "Edit Customer: " + table.rows[x.rowIndex].cells[1].innerHTML;
-        modalEditCustomerID.value = table.rows[x.rowIndex].cells[2].innerHTML;
         modalEditLicense.value = table.rows[x.rowIndex].cells[3].innerHTML;
     }
 

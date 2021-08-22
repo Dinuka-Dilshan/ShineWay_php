@@ -3,34 +3,25 @@ session_start();
 
 require("../config/db.php");
 
-if (isset($_POST['submit-edit-user'])) {
-    $ID = $_POST['submit-edit-userID'];
-    $name = $_POST['edit-name'];
-    $email = $_POST['edit-email'];
-    $phone = $_POST['edit-phone'];
-    $address = $_POST['edit-address'];
-    $NIC = $_POST['edit-NIC'];
-    $userType = $_POST['edit-userType'];
+if (isset($_POST['submit-edit-customer'])) {
+    $name = $_POST['customer-edit-name'];
+    $email = $_POST['customer-edit-email'];
+    $phone = $_POST['customer-edit-phone'];
+    $address = $_POST['customer-edit-address'];
+    $NIC = $_POST['customer-edit-NIC'];
+    $license = $_POST['customer-edit-license'];
 
-    $query = "UPDATE `users` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address'  WHERE `ID` = '$ID'";
+    $query = "UPDATE `customer` SET `Licen_num`='$license',`Cus_name`='$name',`Tel_num`='$phone',`Email`='$email',`Cus_Address`='$address' WHERE `Cus_NIC` = '$NIC';";
 
     $result = $connection->query($query);
 
     if ($result) {
-        $_SESSION['userEditStatus'] = 1;
+        $_SESSION['customerEditStatus'] = 1;
     } else {
-        $_SESSION['userEditStatus'] = 0;
-    }
-
-    if($_FILES['edit-image']['name']!=''){
-        $target_file = "../public/img/Users/".$email.".jpg";
-        if(file_exists($target_file)){
-            unlink($target_file);
-        }
-        move_uploaded_file($_FILES["edit-image"]["tmp_name"], $target_file);
+        $_SESSION['customerEditStatus'] = 0;
     }
     
 }
 
-    header('Location: user-view-controller.php');
+    header('Location: customer-view-controller.php');
 ?>
