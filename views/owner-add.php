@@ -110,7 +110,7 @@ if (isset($_SESSION['ownerAddStatus'])) {
                         <!-- Submit button -->
                         <div class="row">
                             <div class="col-6">
-                                <button type="reset" id="btnReset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button>
+                                <button type="reset"  class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button>
                             </div>
                             <div class="col-6">
                                 <button type="submit" name="submit-add-owner" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add User</button>
