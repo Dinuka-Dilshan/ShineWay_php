@@ -1,0 +1,311 @@
+<?php
+
+session_start();
+
+require('./partials/header.php');
+
+
+$scriptSetValues;
+
+$error = -1; // -1 = no message to display 1 = successfull  0 = error 2 = email exists
+
+if (isset($_SESSION['userAddStatus'])) {
+    if ($_SESSION['userAddStatus'] == 1) {
+        $error = 1;
+    } else if ($_SESSION['userAddStatus'] == 0) {
+        $error = 0;
+    } else if ($_SESSION['userAddStatus'] == 2) {
+        $error = 2;
+        $name =  $_SESSION['faildToAddName'];
+        $email = $_SESSION['faildToAddEmail'];
+        $phone =  $_SESSION['faildToAddPhone'];
+        $address =  $_SESSION['faildToAddAddress'];
+        $NIC = $_SESSION['faildToAddNIC'];
+        $userType = $_SESSION['faildToAddUserType'];
+        $scriptSetValues = "setFiledsAfterFail('$name', '$phone', '$email', '$address', '$NIC');";
+        unset($_SESSION['faildToAddName']);
+        unset($_SESSION['faildToAddEmail']);
+        unset($_SESSION['faildToAddPhone']);
+        unset($_SESSION['faildToAddAddress']);
+        unset($_SESSION['faildToAddNIC']);
+        unset($_SESSION['faildToAddUserType']);
+    } else {
+        $error = -1;
+    }
+
+    unset($_SESSION['userAddStatus']);
+}
+
+
+?>
+
+
+
+<div class="container-fluid ">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+            <div class="card border shadow-0 my-3 ">
+                <div class="card-header fs-3">
+                    ADD VEHICLE
+                </div>
+                <div class="card-body">
+                    <form  enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/vehicle-add-controller.php" method="POST">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input pattern="^[A-Z0-9]{2,3}[-][0-9]{4}$" id="vehicleNumber" name="vehicleNumber" type="text" class="form-control" required />
+                                    <label class="form-label" for="form6Example1">Vehicle Number</label>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Enter a valid Vehicle Number</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <div class="form-outline">
+                                    <input pattern="[a-zA-Z]{2,}" id="brand" name="Brand" type="text"  class="form-control" required />
+                                    <label class="form-label" for="form6Example2">Brand</label>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Enter a valid Brand</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-outline ">
+                                    <input pattern="[a-zA-Z0-9 -]{2,}" name="model" id="model" type="text" id="form6Example4" class="form-control" required />
+                                    <label class="form-label" for="form6Example4">model</label>
+                                    <div class="valid-feedback ">Looks good!</div>
+                                    <div class="invalid-feedback ">Enter a valid Model</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline ">
+                                    <input autocomplete="off" name="NIC" id="NIC"  type="text" class="form-control" required />
+                                    <label class="form-label" for="form6Example5">Owner NIC</label>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Enter a valid NIC</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <div class="form-outline">
+                                    <input name="dailyPrice" id="dailyPrice" type="number"  class="form-control" required />
+                                    <label class="form-label" for="form6Example6">Daily Price</label>
+                                    <div class="valid-feedback ">Looks good!</div>
+                                    <div class="invalid-feedback ">Enter a valid price</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-outline">
+                                    <input name="weeklyPrice" id="weeklyPrice" type="number" class="form-control" required />
+                                    <label class="form-label" for="form6Example6">Weekly Price</label>
+                                    <div class="valid-feedback ">Looks good!</div>
+                                    <div class="invalid-feedback ">Enter a valid price</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="row mb-3 ">
+                            <div class="col-6">
+                                <div class="form-outline">
+                                    <input name="monthlyPrice" id="monthlyPrice" type="number" class="form-control" required />
+                                    <label class="form-label" for="form6Example6">Monthly Price</label>
+                                    <div class="valid-feedback ">Looks good!</div>
+                                    <div class="invalid-feedback ">Enter a valid price</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-outline">
+                                    <input name="ownerPrice" id="ownerPrice" type="number" class="form-control" required />
+                                    <label class="form-label" for="form6Example6">Owner Payment</label>
+                                    <div class="valid-feedback ">Looks good!</div>
+                                    <div class="invalid-feedback ">Enter a valid price</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-4 g-1">
+                            <div class="col-12 ">
+                                <div class="bg-white ">
+                                    <label class="form-label bg-white mb-0 pb-0" for="customFile">Overall Image</label>
+                                    <input name="overallImage" type="file" class="form-control bg-white " id="overallImage" accept="image/*" />
+                                </div>
+                            </div>
+
+                            <div class="col-12 ">
+                                <div class="bg-white ">
+                                    <label class="form-label bg-white mb-0 pb-0" for="customFile">Inside Image</label>
+                                    <input name="insideImage" type="file" class="form-control bg-white " id="insideImage" accept="image/*" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 mt-2">
+                                <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">Vehicle Type</label>
+                                <select name="vehicleType" class="bg-white  form-control " id="vehicleType" required>
+                                    <option selected value="Car"> Car</option>
+                                    <option value="Van"> Van</option>
+                                    <option value="Bike"> Bike</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="reset" id="btnReset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" name="submit-add-vehicle" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add Vehicle details</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalMessage" id="btnModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error-->
+<div class="modal fade" id="modalMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-success " id="staticBackdropLabel"> Successfully Added!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalErrorMessage" id="btnErrorModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error-->
+<div class="modal fade" id="modalErrorMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-danger " id="staticBackdropLabel"> Cannot Add!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Button trigger modal email exists -->
+<button type="button" class="btn btn-primary d-none" data-mdb-toggle="modal" data-mdb-target="#modalErrorEmailMessage" id="btnErrorEmailModal">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal error email exists-->
+<div class="modal fade" id="modalErrorEmailMessage" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content ">
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-10">
+                            <h6 class="modal-title text-danger " id="staticBackdropLabel"> Email Already Exists!</h6>
+                        </div>
+
+                        <div class="col-2 ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+<script src="../public/js/form-validstion.js"></script>
+
+<script>
+    function getByID(elementID) {
+        return document.getElementById(elementID);
+    }
+
+    function setFiledsAfterFail(name, phone, email, address, nic) {
+        getByID('name').value = name;
+        getByID('phone').value = phone;
+        getByID('email').value = email;
+        getByID('address').value = address;
+        getByID('nic').value = nic;
+    }
+    <?php
+    if ($error == "0") {
+        echo "document.getElementById('btnErrorModal').click();";
+    } else if ($error == "1") {
+        echo "document.getElementById('btnModal').click();";
+    } else if ($error == "2") {
+        echo "document.getElementById('btnErrorEmailModal').click();";
+        echo $scriptSetValues;
+    }
+    ?>
+</script>
+
+<?php
+require('./partials/footer.php');
+?>
