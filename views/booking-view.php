@@ -4,20 +4,20 @@ session_start();
 
 require('./partials/header.php');
 
-$customerList = $_SESSION['customerList'];
+$bookingList = $_SESSION['bookingList'] ;
 
 $error = -1; // -1 = no message to display 1 = successfull  0 = error
 
-if (isset($_SESSION['customerEditStatus'])) {
-    if ($_SESSION['customerEditStatus'] == 1) {
+if (isset($_SESSION['bookingEditStatus'])) {
+    if ($_SESSION['bookingEditStatus'] == 1) {
         $error = 1;
-    } else if ($_SESSION['customerEditStatus'] == 0) {
+    } else if ($_SESSION['bookingEditStatus'] == 0) {
         $error = 0;
     } else {
         $error = -1;
     }
 
-    unset($_SESSION['customerEditStatus']);
+    unset($_SESSION['bookingEditStatus']);
 }
 ?>
 
@@ -31,7 +31,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row justify-content-between">
                         <div class="col-12 col-lg-4 m-1 fw-bold fs-5 text-white">
-                            Customers
+                            BOOKINGS
                         </div>
 
                         <div class="col-12 col-lg-3 d-flex align-items-center">
@@ -50,39 +50,41 @@ if (isset($_SESSION['customerEditStatus'])) {
                     <thead>
                         <tr>
                             <th class="fs-6 fw-bold" scope="col">#</th>
-                            <th class="fs-6 fw-bold" scope="col">Name</th>
-                            <th class="fs-6 fw-bold" scope="col">NIC</th>
-                            <th class="fs-6 fw-bold" scope="col">Lisence No:</th>
-                            <th class="fs-6 fw-bold" scope="col">Email</th>
-                            <th class="fs-6 fw-bold" scope="col">Telephone</th>
-                            <th class="fs-6 fw-bold" scope="col">Address</th>
+                            <th class="fs-6 fw-bold" scope="col">Booking ID</th>
+                            <th class="fs-6 fw-bold" scope="col">Vehicle Number</th>
+                            <th class="fs-6 fw-bold" scope="col">License</th>
+                            <th class="fs-6 fw-bold" scope="col">Starting Date</th>
+                            <th class="fs-6 fw-bold" scope="col">Package Type</th>
+                            <th class="fs-6 fw-bold" scope="col">Customer NIC</th>
+                            <th class="fs-6 fw-bold" scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $countTable = 1; ?>
-                        <?php foreach ($customerList as $customer) : ?>
-                            <tr onclick="cellClickFire(this)">
+                        <?php foreach ($bookingList as $booking) : ?>
+                            <tr onclick="cellClickFire(this)" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
                                 <th scope="row"><?php echo $countTable  ?></th>
-                                <td><?php echo $customer['Cus_name'] ?></td>
-                                <td><?php echo $customer['Cus_NIC'] ?></td>
-                                <td><?php echo $customer['Licen_num'] ?></td>
-                                <td><?php echo $customer['Email'] ?></td>
-                                <td><?php echo $customer['Tel_num'] ?></td>
-                                <td><?php echo $customer['Cus_Address'] ?></td>
-                                <form action="../controllers/customer-view-controller.php" method="post">
+                                <td><?php echo $booking['Booking_ID'] ?></td>
+                                <td><?php echo $booking['Vehicle_num'] ?></td>
+                                <td><?php echo $booking['Licen_num'] ?></td>
+                                <td><?php echo $booking['Start_date'] ?></td>
+                                <td><?php echo $booking['Package_Type'] ?></td>
+                                <td><?php echo $booking['Cus_NIC'] ?></td>
+                                <td><?php echo $booking['Discription'] ?></td>
+                                <form action="../controllers/booking-view-controller.php" method="post">
                                     <td>
-                                        <button name="submit-delete-customer" value="<?php echo $customer['Cus_NIC'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
+                                        <button name="submit-delete-booking" value="<?php echo $booking['Booking_ID'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
                                             <i class="fas fa-times"></i>
                                         </button>
                                     </td>
                                 </form>
-
+                                <!--<form action="../controllers/user-edit-controller.php" method="post">-->
                                 <td>
                                     <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class="btn btn-secondary btn-sm px-3">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
                                 </td>
-
+                                <!--</form>-->
                             </tr>
                             <?php $countTable++ ?>
                         <?php endforeach ?>
@@ -93,8 +95,42 @@ if (isset($_SESSION['customerEditStatus'])) {
     </div>
 </div>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-align-center img-thumbnail d-flex justify-content-center">
+                            <img class="modal-img" id="user-image" src="../public/img/Users/jadinukadilshan@gmail.com.jpg" alt="Cannot Load Image">
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <!-- Modal edit user-->
-<div class="modal fade" id="modal2" data-mdb-backdrop="static" data-mdb-keyboard="false">
+<div class="modal fade" id="modal2" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
@@ -105,11 +141,11 @@ if (isset($_SESSION['customerEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/customer-edit-controller.php" method="POST">
+                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="name" name="customer-edit-name" type="text" class="form-control" required />
+                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid name</div>
@@ -120,7 +156,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input readonly pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="customer-edit-NIC" type="text" class="form-control" required />
+                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-nic" name="edit-NIC" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -131,7 +167,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="customer-edit-address" id="address" type="text" class="form-control" required />
+                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Address</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Address</div>
@@ -144,7 +180,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="customer-edit-email" id="email" type="email" class="form-control" required />
+                                            <input name="edit-email" id="Modal-edit-email" type="email" id="form6Example5" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Email</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Email</div>
@@ -157,7 +193,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="customer-edit-phone" id="phone" type="text" class="form-control" required />
+                                            <input pattern="[0-9]{10}" name="edit-phone" id="Modal-edit-phone" type="text" id="form6Example6" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Phone</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid phone number</div>
@@ -167,24 +203,28 @@ if (isset($_SESSION['customerEditStatus'])) {
 
 
                                 <div class="row mb-4">
-
-                                    <div class="col">
-                                        <div class="form-outline">
-                                            <input readonly pattern="^[A-Z]{1}[1-9]{7,8}[A-Z]{0,1}$" name="customer-edit-license" id="license" type="text" class="form-control" required />
-                                            <label class="form-label" for="form6Example6">License</label>
-                                            <div class="valid-feedback ">Looks good!</div>
-                                            <div class="invalid-feedback ">Enter a valid licence number</div>
+                                    <div class="col-12 ">
+                                        <div class="bg-white ">
+                                            <label class="form-label bg-white mb-0 pb-0" for="customFile">Image</label>
+                                            <input name="edit-image" type="file" class="form-control bg-white " id="customFile" accept="image/*" />
                                         </div>
                                     </div>
 
 
+                                    <div class="col-12 mt-2">
+                                        <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">User Type</label>
+                                        <select name="edit-userType" class="bg-white  form-control " id="typeSelect" required>
+                                            <option selected value="Admin"> Admin </option>
+                                            <option value="User"> User</option>
+                                        </select>
+                                    </div>
 
                                 </div>
 
 
-                                
+                                <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-customer" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Customer</button>
+                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
                             </form>
                         </div>
                     </div>
@@ -265,30 +305,31 @@ if (isset($_SESSION['customerEditStatus'])) {
 
 
 
-
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
 <script src="../public/js/form-validstion.js"></script>
 <!-- Modal image set -->
 <script>
     const table = document.getElementById('dataTable');
+    let userImage = document.getElementById('user-image');
     const modalTitle = document.getElementById('staticBackdropLabel');
-    const modalEditName = document.getElementById('name');
-    const modalEditNIC = document.getElementById('nic');
-    const modalEditAddress = document.getElementById('address');
-    const modalEditPhone = document.getElementById('phone');
-    const modalEditEmail = document.getElementById('email');
+    const modalEditName = document.getElementById('Modal-edit-name');
+    const modalEditNIC = document.getElementById('Modal-edit-nic');
+    const modalEditAddress = document.getElementById('Modal-edit-address');
+    const modalEditPhone = document.getElementById('Modal-edit-phone');
+    const modalEditEmail = document.getElementById('Modal-edit-email');
     const modalEditTitle = document.getElementById('Modal-edit-title');
-    const modalEditLicense = document.getElementById('license');
+    const modalEditUserID = document.getElementById('submit-edit-userID');
 
     function cellClickFire(x) {
+        userImage.src = `../public/img/Users/${table.rows[x.rowIndex].cells[4].innerHTML}.jpg`;
+        modalTitle.innerHTML = table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditName.value = table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditNIC.value = table.rows[x.rowIndex].cells[2].innerHTML;
         modalEditAddress.value = table.rows[x.rowIndex].cells[6].innerHTML;
         modalEditPhone.value = table.rows[x.rowIndex].cells[5].innerHTML;
         modalEditEmail.value = table.rows[x.rowIndex].cells[4].innerHTML;
-        modalEditTitle.innerHTML = "Edit Customer: " + table.rows[x.rowIndex].cells[1].innerHTML;
-        modalEditLicense.value = table.rows[x.rowIndex].cells[3].innerHTML;
+        modalEditTitle.innerHTML = "Edit User: " + table.rows[x.rowIndex].cells[1].innerHTML;
+        modalEditUserID.value = table.rows[x.rowIndex].cells[7].innerHTML;
     }
 
 
@@ -313,3 +354,4 @@ if (isset($_SESSION['customerEditStatus'])) {
 <?php
 require('./partials/footer.php');
 ?>
+
