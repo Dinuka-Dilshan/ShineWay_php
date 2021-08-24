@@ -4,8 +4,8 @@
     require("../config/db.php");
 
     if(isset($_POST['submit-delete-booking'])){
-        $NIC = $_POST['submit-delete-customer'];
-        $query = "DELETE FROM `customer` WHERE `Cus_NIC` = '$NIC'";
+        $bookingID = $_POST['submit-delete-booking'];
+        $query = "DELETE FROM `booking` WHERE `Booking_ID` = '$bookingID';";
 
         $result = $connection->query($query);
     }
