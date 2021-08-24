@@ -4,7 +4,7 @@ session_start();
 
 require('./partials/header.php');
 
-$bookingList = $_SESSION['bookingList'] ;
+$bookingList = $_SESSION['bookingList'];
 
 $error = -1; // -1 = no message to display 1 = successfull  0 = error
 
@@ -145,10 +145,8 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-name" name="edit-name" type="text" id="form6Example1" class="form-control" required />
-                                            <label class="form-label" for="form6Example1">Name</label>
-                                            <div class="valid-feedback">Looks good!</div>
-                                            <div class="invalid-feedback">Enter a valid name</div>
+                                            <input readonly id="bookingID" name="bookingID" type="text" class="form-control" required />
+                                            <label class="form-label" for="form6Example1">Booking ID</label>
                                         </div>
                                     </div>
                                 </div>
@@ -156,75 +154,74 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-nic" name="edit-NIC" type="text" id="form6Example2" class="form-control" required />
-                                            <label class="form-label" for="form6Example2">NIC</label>
+                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="vehicleNumber" name="vehicleNumber" type="text" class="form-control" required />
+                                            <label class="form-label" for="form6Example2">Vehicle Number</label>
                                             <div class="valid-feedback">Looks good!</div>
-                                            <div class="invalid-feedback">Enter a valid NIC</div>
+                                            <div class="invalid-feedback">Enter a valid Vehicle Number</div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="edit-address" id="Modal-edit-address" type="text" id="form6Example4" class="form-control" required />
-                                            <label class="form-label" for="form6Example4">Address</label>
+                                            <input name="license" id="license" type="text" class="form-control" required />
+                                            <label class="form-label" for="form6Example4">License</label>
                                             <div class="valid-feedback ">Looks good!</div>
-                                            <div class="invalid-feedback ">Enter a valid Address</div>
+                                            <div class="invalid-feedback ">Enter a valid License</div>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <!-- Email input -->
-                                <div class="row mb-4">
+                                <div class="row mb-2">
                                     <div class="col">
-                                        <div class="form-outline ">
-                                            <input name="edit-email" id="Modal-edit-email" type="email" id="form6Example5" class="form-control" required />
-                                            <label class="form-label" for="form6Example5">Email</label>
+                                        <label class="form-label mb-0 pb-0" for="form6Example5">Starting Date</label>
+                                        <div class="form-outline mt-0">
+                                            <input name="startingDate" id="startingDate" type="date" class="form-control" required />
                                             <div class="valid-feedback">Looks good!</div>
-                                            <div class="invalid-feedback">Enter a valid Email</div>
+                                            <div class="invalid-feedback">Enter a valid Date</div>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <!-- Number input -->
+                                <div class="row mb-4">
+                                    <div class="col-12 ">
+                                        <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">Package Type</label>
+                                        <select name="packageType" class="bg-white  form-control " id="packageType" required>
+                                            <option selected value="Daily Basis"> Daily Basis </option>
+                                            <option value="Weekly Basis"> Weekly Basis</option>
+                                            <option value="Monthly Basis"> Monthly Basis</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="form-outline ">
+                                            <input name="NIC" id="NIC" type="text" class="form-control" required />
+                                            <label class="form-label" for="form6Example4">Customer NIC</label>
+                                            <div class="valid-feedback ">Looks good!</div>
+                                            <div class="invalid-feedback ">Enter a valid NIC</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="edit-phone" id="Modal-edit-phone" type="text" id="form6Example6" class="form-control" required />
-                                            <label class="form-label" for="form6Example6">Phone</label>
-                                            <div class="valid-feedback ">Looks good!</div>
-                                            <div class="invalid-feedback ">Enter a valid phone number</div>
+                                            <textarea class="form-control" id="description" name="description" rows="2"></textarea>
+                                            <label class="form-label" for="textAreaExample">Description</label>
                                         </div>
                                     </div>
                                 </div>
 
-
-                                <div class="row mb-4">
-                                    <div class="col-12 ">
-                                        <div class="bg-white ">
-                                            <label class="form-label bg-white mb-0 pb-0" for="customFile">Image</label>
-                                            <input name="edit-image" type="file" class="form-control bg-white " id="customFile" accept="image/*" />
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-12 mt-2">
-                                        <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">User Type</label>
-                                        <select name="edit-userType" class="bg-white  form-control " id="typeSelect" required>
-                                            <option selected value="Admin"> Admin </option>
-                                            <option value="User"> User</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-
-                                <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
-                                <!-- Submit button -->
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
+                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Booking</button>
                             </form>
                         </div>
                     </div>
@@ -310,26 +307,24 @@ if (isset($_SESSION['bookingEditStatus'])) {
 <!-- Modal image set -->
 <script>
     const table = document.getElementById('dataTable');
-    let userImage = document.getElementById('user-image');
-    const modalTitle = document.getElementById('staticBackdropLabel');
-    const modalEditName = document.getElementById('Modal-edit-name');
-    const modalEditNIC = document.getElementById('Modal-edit-nic');
-    const modalEditAddress = document.getElementById('Modal-edit-address');
-    const modalEditPhone = document.getElementById('Modal-edit-phone');
-    const modalEditEmail = document.getElementById('Modal-edit-email');
-    const modalEditTitle = document.getElementById('Modal-edit-title');
-    const modalEditUserID = document.getElementById('submit-edit-userID');
+    const modalTitle = document.getElementById('Modal-edit-title');
+    const modalEditBookingID = document.getElementById('bookingID');
+    const modalEditVehicleNumber = document.getElementById('vehicleNumber');
+    const modalEditLicense = document.getElementById('license');
+    const modalEditStartingDate = document.getElementById('startingDate');
+    const modalEditPackageType = document.getElementById('packageType');
+    const modalEditNIC = document.getElementById('NIC');
+    const modalEditDescription = document.getElementById('description');
 
     function cellClickFire(x) {
-        userImage.src = `../public/img/Users/${table.rows[x.rowIndex].cells[4].innerHTML}.jpg`;
-        modalTitle.innerHTML = table.rows[x.rowIndex].cells[1].innerHTML;
-        modalEditName.value = table.rows[x.rowIndex].cells[1].innerHTML;
-        modalEditNIC.value = table.rows[x.rowIndex].cells[2].innerHTML;
-        modalEditAddress.value = table.rows[x.rowIndex].cells[6].innerHTML;
-        modalEditPhone.value = table.rows[x.rowIndex].cells[5].innerHTML;
-        modalEditEmail.value = table.rows[x.rowIndex].cells[4].innerHTML;
-        modalEditTitle.innerHTML = "Edit User: " + table.rows[x.rowIndex].cells[1].innerHTML;
-        modalEditUserID.value = table.rows[x.rowIndex].cells[7].innerHTML;
+        modalEditBookingID.value = table.rows[x.rowIndex].cells[1].innerHTML;
+        modalEditVehicleNumber.value = table.rows[x.rowIndex].cells[2].innerHTML;
+        modalEditLicense.value = table.rows[x.rowIndex].cells[3].innerHTML;
+        modalEditStartingDate.value = table.rows[x.rowIndex].cells[4].innerHTML;
+        modalEditNIC.value = table.rows[x.rowIndex].cells[6].innerHTML;
+        modalEditDescription.value = table.rows[x.rowIndex].cells[7].innerHTML;
+        modalTitle.innerHTML = "Edit Booking ID: " + table.rows[x.rowIndex].cells[1].innerHTML;
+        modalEditPackageType.value = table.rows[x.rowIndex].cells[5].innerHTML;
     }
 
 
@@ -354,4 +349,3 @@ if (isset($_SESSION['bookingEditStatus'])) {
 <?php
 require('./partials/footer.php');
 ?>
-
