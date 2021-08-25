@@ -49,7 +49,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                 <table class="table  table-striped" id="dataTable">
                     <thead>
                         <tr>
-                            <th class="fs-6 fw-bold" scope="col">#</th>
+                            <th class=" d-none fs-6 fw-bold" scope="col">#</th>
                             <th class="fs-6 fw-bold" scope="col">ID</th>
                             <th class="fs-6 fw-bold" scope="col">Vehicle Number</th>
                             <th class="fs-6 fw-bold" scope="col">License</th>
@@ -65,8 +65,8 @@ if (isset($_SESSION['bookingEditStatus'])) {
                     <tbody>
                         <?php $countTable = 1; ?>
                         <?php foreach ($bookingList as $booking) : ?>
-                            <tr onclick="cellClickFire(this)" >
-                                <th scope="row"><?php echo $countTable  ?></th>
+                            <tr onclick="cellClickFire(this)"  data-mdb-toggle="modal" data-mdb-target="#modal2">
+                                <th class="d-none" scope="row"><?php echo $countTable  ?></th>
                                 <td><?php echo $booking['Booking_ID'] ?></td>
                                 <td><?php echo $booking['Vehicle_num'] ?></td>
                                 <td><?php echo $booking['Licen_num'] ?></td>
@@ -144,7 +144,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="^[A-Z]{1}[1-9]{7,8}[A-Z]{0,1}$" name="license" id="license" type="text" class="form-control" required />
+                                            <input readonly name="license" id="license" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example4">License</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid License</div>
@@ -182,7 +182,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})"  name="NIC" id="NIC" type="text" class="form-control" required />
+                                            <input readonly  name="NIC" id="NIC" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Customer NIC</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid NIC</div>

@@ -15,14 +15,14 @@ if (isset($_POST['submit-edit-booking'])) {
     $advancedPayment = $_POST['advancedPayment'];
     $status = $_POST['status'];
 
-    $query = "UPDATE `booking` SET `Vehicle_num`='$vehicleNumber',`Licen_num`='$license',`Start_date`='$startingDate',`Package_Type`='$packageType',`Cus_NIC`='$customerNIC',`Discription`='$description',,`Deposit_Amount`='$depositAmount',`Advanced_Payment`='$advancedPayment',`Status`='$status' WHERE `Booking_ID` = '$bookingID';";
+    $query = "UPDATE `booking` SET `Vehicle_num`='$vehicleNumber',`Licen_num`='$license',`Start_date`='$startingDate',`Package_Type`='$packageType',`Cus_NIC`='$customerNIC',`Discription`='$description',`Deposit_Amount`='$depositAmount',`Advanced_Payment`='$advancedPayment',`Status`='$status' WHERE `Booking_ID` = '$bookingID';";
 
     $result = $connection->query($query);
 
     if ($result) {
-        $_SESSION['customerEditStatus'] = 1;
+        $_SESSION['bookingEditStatus'] = 1;
     } else {
-        $_SESSION['customerEditStatus'] = 0;
+        $_SESSION['bookingEditStatus'] = 0;
     }
     
 }
