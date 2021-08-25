@@ -3,12 +3,12 @@
 
     require("../config/db.php");
 
-    if(isset($_POST['submit-delete-booking'])){
+    /*if(isset($_POST['submit-delete-booking'])){
         $bookingID = $_POST['submit-delete-booking'];
         $query = "DELETE FROM `booking` WHERE `Booking_ID` = '$bookingID';";
 
         $result = $connection->query($query);
-    }
+    }*/
 
     $query = "SELECT * FROM `booking`";
 

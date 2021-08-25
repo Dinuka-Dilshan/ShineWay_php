@@ -50,19 +50,22 @@ if (isset($_SESSION['bookingEditStatus'])) {
                     <thead>
                         <tr>
                             <th class="fs-6 fw-bold" scope="col">#</th>
-                            <th class="fs-6 fw-bold" scope="col">Booking ID</th>
+                            <th class="fs-6 fw-bold" scope="col">ID</th>
                             <th class="fs-6 fw-bold" scope="col">Vehicle Number</th>
                             <th class="fs-6 fw-bold" scope="col">License</th>
                             <th class="fs-6 fw-bold" scope="col">Starting Date</th>
-                            <th class="fs-6 fw-bold" scope="col">Package Type</th>
+                            <th class="fs-6 fw-bold" scope="col">Package</th>
                             <th class="fs-6 fw-bold" scope="col">Customer NIC</th>
+                            <th class="fs-6 fw-bold" scope="col">Deposit Amount</th>
+                            <th class="fs-6 fw-bold" scope="col">Advanced Payment</th>
+                            <th class="fs-6 fw-bold" scope="col">Status</th>
                             <th class="fs-6 fw-bold" scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $countTable = 1; ?>
                         <?php foreach ($bookingList as $booking) : ?>
-                            <tr onclick="cellClickFire(this)" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
+                            <tr onclick="cellClickFire(this)" >
                                 <th scope="row"><?php echo $countTable  ?></th>
                                 <td><?php echo $booking['Booking_ID'] ?></td>
                                 <td><?php echo $booking['Vehicle_num'] ?></td>
@@ -70,21 +73,24 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <td><?php echo $booking['Start_date'] ?></td>
                                 <td><?php echo $booking['Package_Type'] ?></td>
                                 <td><?php echo $booking['Cus_NIC'] ?></td>
+                                <td><?php echo $booking['Deposit_Amount'] ?></td>
+                                <td><?php echo $booking['Advanced_Payment'] ?></td>
+                                <td><?php echo $booking['Status'] ?></td>
                                 <td><?php echo $booking['Discription'] ?></td>
-                                <form action="../controllers/booking-view-controller.php" method="post">
+                                <!-- <form action="../controllers/booking-view-controller.php" method="post">
                                     <td>
                                         <button name="submit-delete-booking" value="<?php echo $booking['Booking_ID'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
                                             <i class="fas fa-times"></i>
                                         </button>
                                     </td>
-                                </form>
-                                <!--<form action="../controllers/user-edit-controller.php" method="post">-->
+                                </form> -->
+                              
                                 <td>
                                     <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class="btn btn-secondary btn-sm px-3">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
                                 </td>
-                                <!--</form>-->
+                                
                             </tr>
                             <?php $countTable++ ?>
                         <?php endforeach ?>
@@ -97,34 +103,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 text-align-center img-thumbnail d-flex justify-content-center">
-                            <img class="modal-img" id="user-image" src="../public/img/Users/jadinukadilshan@gmail.com.jpg" alt="Cannot Load Image">
-                        </div>
-                    </div>
 
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -141,7 +120,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
+                            <form  class=" needs-validation" novalidate action="../controllers/booking-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
@@ -154,7 +133,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="vehicleNumber" name="vehicleNumber" type="text" class="form-control" required />
+                                            <input pattern="^[A-Z0-9]{2,3}[-][0-9]{4}$" id="vehicleNumber" name="vehicleNumber" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example2">Vehicle Number</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Vehicle Number</div>
@@ -165,7 +144,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="license" id="license" type="text" class="form-control" required />
+                                            <input pattern="^[A-Z]{1}[1-9]{7,8}[A-Z]{0,1}$" name="license" id="license" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example4">License</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid License</div>
@@ -179,7 +158,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                     <div class="col">
                                         <label class="form-label mb-0 pb-0" for="form6Example5">Starting Date</label>
                                         <div class="form-outline mt-0">
-                                            <input name="startingDate" id="startingDate" type="date" class="form-control" required />
+                                            <input  name="startingDate" id="startingDate" type="date" class="form-control" required />
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Date</div>
                                         </div>
@@ -203,7 +182,7 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="NIC" id="NIC" type="text" class="form-control" required />
+                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})"  name="NIC" id="NIC" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Customer NIC</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid NIC</div>
@@ -211,17 +190,50 @@ if (isset($_SESSION['bookingEditStatus'])) {
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="form-outline ">
+                                            <input   name="depositAmount" id="depositAmount" type="Number" class="form-control" required />
+                                            <label class="form-label" for="form6Example4">Deposit Amount</label>
+                                            <div class="valid-feedback ">Looks good!</div>
+                                            <div class="invalid-feedback ">Enter a valid Amount</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="form-outline ">
+                                            <input   name="advancedPayment" id="advancedPayment" type="Number" class="form-control" required />
+                                            <label class="form-label" for="form6Example4">Advanced Payment</label>
+                                            <div class="valid-feedback ">Looks good!</div>
+                                            <div class="invalid-feedback ">Enter a valid Amount</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-12 ">
+                                        <label class="form-label bg-white mb-0 pb-0 " for="typeSelect">Status</label>
+                                        <select name="status" class="bg-white  form-control " id="status" required>
+                                            <option selected value="Ongoing"> Ongoing </option>
+                                            <option value="Completed"> Completed</option>
+                                            <option value="Cancelled"> Cancelled</option>
+                                        </select>
+                                    </div>
+                                </div>
+
 
                                 <div class="row mb-3">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <textarea class="form-control" id="description" name="description" rows="2"></textarea>
+                                            <textarea pattern="[a-zA-Z0-9]*"class="form-control" id="description" name="description" rows="2"></textarea>
                                             <label class="form-label" for="textAreaExample">Description</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Booking</button>
+                                <button type="submit" name="submit-edit-booking" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Booking</button>
                             </form>
                         </div>
                     </div>
@@ -315,6 +327,10 @@ if (isset($_SESSION['bookingEditStatus'])) {
     const modalEditPackageType = document.getElementById('packageType');
     const modalEditNIC = document.getElementById('NIC');
     const modalEditDescription = document.getElementById('description');
+    const modalEditDepositAmount = document.getElementById('depositAmount');
+    const modalEditAdvancedPayment = document.getElementById('advancedPayment');
+    const modalEditStatus = document.getElementById('status');
+    
 
     function cellClickFire(x) {
         modalEditBookingID.value = table.rows[x.rowIndex].cells[1].innerHTML;
@@ -322,9 +338,12 @@ if (isset($_SESSION['bookingEditStatus'])) {
         modalEditLicense.value = table.rows[x.rowIndex].cells[3].innerHTML;
         modalEditStartingDate.value = table.rows[x.rowIndex].cells[4].innerHTML;
         modalEditNIC.value = table.rows[x.rowIndex].cells[6].innerHTML;
-        modalEditDescription.value = table.rows[x.rowIndex].cells[7].innerHTML;
+        modalEditDescription.value = table.rows[x.rowIndex].cells[10].innerHTML;
         modalTitle.innerHTML = "Edit Booking ID: " + table.rows[x.rowIndex].cells[1].innerHTML;
         modalEditPackageType.value = table.rows[x.rowIndex].cells[5].innerHTML;
+        modalEditDepositAmount.value = table.rows[x.rowIndex].cells[7].innerHTML;
+        modalEditAdvancedPayment.value = table.rows[x.rowIndex].cells[8].innerHTML;
+        modalEditStatus.value = table.rows[x.rowIndex].cells[9].innerHTML;
     }
 
 
