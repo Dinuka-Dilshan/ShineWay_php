@@ -17,6 +17,16 @@ body{
     height: 10rem;
 }
 
+.print-hidden{
+    visibility: visible;
+}
+
+@media print {
+   .print-hidden{
+       visibility: hidden;
+   }
+}
+
 @media only screen and (max-width: 1200px) {
     .w-85{
         width: 100%;

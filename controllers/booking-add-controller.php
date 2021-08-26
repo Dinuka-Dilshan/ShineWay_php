@@ -68,6 +68,18 @@
     
                 if($result){
                      $_SESSION['bookingAddStatus'] = "3";
+                     $_SESSION['billPreviewCuctomer'] = $resultCustomerDetails;
+                     $_SESSION['billPreviewVehicleDetails'] = $resultVehicleDetails;
+                     $_SESSION['billPreviewBookingID'] = $_POST['bookingID'];
+                    $_SESSION['billPreviewLicense'] = $_POST['license'];
+                    $_SESSION['billPreviewStartingDate'] = $_POST['startingDate'];
+                    $_SESSION['billPreviewPackageType'] = $_POST['packageType'];
+                    $_SESSION['billPreviewDescription'] = $_POST['description'];
+                    $_SESSION['billPreviewDepositAmount'] = $_POST['depositAmount'];
+                    $_SESSION['billPreviewPayment'] = $_POST['advancedPayment'];
+                    $_SESSION['billPreviewNIC'] = $_POST['NIC'];
+                    $_SESSION['billPreviewVehicleNumber'] = $_POST['vehicleNumber'];
+
                 }else{
                     $_SESSION['bookingAddStatus'] = "2"; 
                     $_SESSION['failedToAddBookingID'] = $_POST['bookingID'];
@@ -91,4 +103,3 @@
     }
   
     header('Location: ../views/booking-add.php')
-?>

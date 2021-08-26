@@ -16,72 +16,72 @@ if (isset($_SESSION['bookingAddStatus'])) {
         $bookingID = $_SESSION['failedToAddBookingID'];
         $license = $_SESSION['failedToAddLicense'];
         $startingDate = $_SESSION['failedToAddStartingDate'];
-        $packageType = $_SESSION['failedToAddPackageType'] ;
-        $description = $_SESSION['failedToAddDescription']; 
-        $depositAmount = $_SESSION['failedToAddDepositAmount'] ;
-        $advancedPayment = $_SESSION['failedToAddPayment'] ;
-        $NIC = $_SESSION['failedToAddNIC'] ;
-        $vehicleNumber = $_SESSION['failedToAddVehicleNumber'] ;
+        $packageType = $_SESSION['failedToAddPackageType'];
+        $description = $_SESSION['failedToAddDescription'];
+        $depositAmount = $_SESSION['failedToAddDepositAmount'];
+        $advancedPayment = $_SESSION['failedToAddPayment'];
+        $NIC = $_SESSION['failedToAddNIC'];
+        $vehicleNumber = $_SESSION['failedToAddVehicleNumber'];
 
         $scriptSetValues = "setFiledsAfterFail('$bookingID', '$vehicleNumber', '$license', '$startingDate', '$packageType', '$NIC', '$depositAmount', '$advancedPayment', '$description');";
-        
+
         unset($_SESSION['failedToAddBookingID']);
         unset($_SESSION['failedToAddLicense']);
         unset($_SESSION['failedToAddStartingDate']);
         unset($_SESSION['failedToAddPackageType']);
-        unset($_SESSION['failedToAddDescription']); 
+        unset($_SESSION['failedToAddDescription']);
         unset($_SESSION['failedToAddDepositAmount']);
         unset($_SESSION['failedToAddPayment']);
         unset($_SESSION['failedToAddNIC']);
         unset($_SESSION['failedToAddVehicleNumber']);
-        
     } else if ($_SESSION['bookingAddStatus'] == 0) {
         $error = 0;
         $bookingID = $_SESSION['failedToAddBookingID'];
         $license = $_SESSION['failedToAddLicense'];
         $startingDate = $_SESSION['failedToAddStartingDate'];
-        $packageType = $_SESSION['failedToAddPackageType'] ;
-        $description = $_SESSION['failedToAddDescription']; 
-        $depositAmount = $_SESSION['failedToAddDepositAmount'] ;
-        $advancedPayment = $_SESSION['failedToAddPayment'] ;
-        $NIC = $_SESSION['failedToAddNIC'] ;
-        $vehicleNumber = $_SESSION['failedToAddVehicleNumber'] ;
+        $packageType = $_SESSION['failedToAddPackageType'];
+        $description = $_SESSION['failedToAddDescription'];
+        $depositAmount = $_SESSION['failedToAddDepositAmount'];
+        $advancedPayment = $_SESSION['failedToAddPayment'];
+        $NIC = $_SESSION['failedToAddNIC'];
+        $vehicleNumber = $_SESSION['failedToAddVehicleNumber'];
 
         $scriptSetValues = "setFiledsAfterFail('$bookingID', '$vehicleNumber', '$license', '$startingDate', '$packageType', '$NIC', '$depositAmount', '$advancedPayment', '$description');";
-        
+
         unset($_SESSION['failedToAddBookingID']);
         unset($_SESSION['failedToAddLicense']);
         unset($_SESSION['failedToAddStartingDate']);
         unset($_SESSION['failedToAddPackageType']);
-        unset($_SESSION['failedToAddDescription']); 
+        unset($_SESSION['failedToAddDescription']);
         unset($_SESSION['failedToAddDepositAmount']);
         unset($_SESSION['failedToAddPayment']);
         unset($_SESSION['failedToAddNIC']);
         unset($_SESSION['failedToAddVehicleNumber']);
-
     } else if ($_SESSION['bookingAddStatus'] == 2) {
         $error = 2;
         $bookingID = $_SESSION['failedToAddBookingID'];
         $license = $_SESSION['failedToAddLicense'];
         $startingDate = $_SESSION['failedToAddStartingDate'];
-        $packageType = $_SESSION['failedToAddPackageType'] ;
-        $description = $_SESSION['failedToAddDescription']; 
-        $depositAmount = $_SESSION['failedToAddDepositAmount'] ;
-        $advancedPayment = $_SESSION['failedToAddPayment'] ;
-        $NIC = $_SESSION['failedToAddNIC'] ;
-        $vehicleNumber = $_SESSION['failedToAddVehicleNumber'] ;
+        $packageType = $_SESSION['failedToAddPackageType'];
+        $description = $_SESSION['failedToAddDescription'];
+        $depositAmount = $_SESSION['failedToAddDepositAmount'];
+        $advancedPayment = $_SESSION['failedToAddPayment'];
+        $NIC = $_SESSION['failedToAddNIC'];
+        $vehicleNumber = $_SESSION['failedToAddVehicleNumber'];
 
         $scriptSetValues = "setFiledsAfterFail('$bookingID', '$vehicleNumber', '$license', '$startingDate', '$packageType', '$NIC', '$depositAmount', '$advancedPayment', '$description');";
-        
+
         unset($_SESSION['failedToAddBookingID']);
         unset($_SESSION['failedToAddLicense']);
         unset($_SESSION['failedToAddStartingDate']);
         unset($_SESSION['failedToAddPackageType']);
-        unset($_SESSION['failedToAddDescription']); 
+        unset($_SESSION['failedToAddDescription']);
         unset($_SESSION['failedToAddDepositAmount']);
         unset($_SESSION['failedToAddPayment']);
         unset($_SESSION['failedToAddNIC']);
         unset($_SESSION['failedToAddVehicleNumber']);
+    } else if ($_SESSION['bookingAddStatus'] == 3) {
+        $error = 3;
     } else {
         $error = -1;
     }
@@ -94,7 +94,7 @@ if (isset($_SESSION['bookingAddStatus'])) {
 
 
 
-<div class="container-fluid">
+<div class="container-fluid print-hidden">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-6">
             <div class="card border shadow-0 my-3 ">
@@ -102,7 +102,7 @@ if (isset($_SESSION['bookingAddStatus'])) {
                     ADD BOOKING
                 </div>
                 <div class="card-body">
-                    <form class=" needs-validation" novalidate   method="POST" action="../controllers/booking-add-controller.php">
+                    <form class=" needs-validation" novalidate method="POST" action="../controllers/booking-add-controller.php">
                         <div class="row mb-3">
                             <div class="col-12">
                                 <div class="form-outline">
@@ -206,7 +206,7 @@ if (isset($_SESSION['bookingAddStatus'])) {
 
                         <div class="row">
                             <div class="col-6"><button type="reset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button></div>
-                            <div  class="col-6"><button type="submit" name="submit-add-booking" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add Booking</button></div>
+                            <div class="col-6"><button type="submit" name="submit-add-booking" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add Booking</button></div>
                         </div>
                     </form>
                 </div>
@@ -310,12 +310,111 @@ if (isset($_SESSION['bookingAddStatus'])) {
     </div>
 </div>
 
+
+
+<button type="button" class="btn btn-primary d-none " data-mdb-toggle="modal" data-mdb-target="#modalBillPreview" id="btnModalBillPreview">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal bill preview-->
+<div class="modal fade" id="modalBillPreview" data-mdb-backdrop="static" data-mdb-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-body " id="print">
+
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end ">
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-4">
+                                <p class=" fs-4">INVOICE PREVIEW</p>
+                            </div>
+                        </div>
+
+
+                        <div class="row border-bottom justify-content-center mt-3 align-items-center border-bottom border-top">
+                            <div class="col-6 text-center">
+                                <p class="fw-bold fs-4">SHINEWAY RENTAL</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-0 justify-content-between border-bottom mb-3">
+                            <div class="col-4 p-0">
+                                <p>TO:</p>
+                                <p>address</p>
+                                <p>0702629599</p>
+                            </div>
+                            <div class="col-4 p-0">
+                                <p>INVOICE</p>
+                                <p>ID</p>
+                                <p>Issue Date</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <table class="table">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Package</th>
+                                            <th scope="col">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-end mt-4 ">
+                            <div class="col-4">
+                                Subtotal
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-4">
+                                Tax
+                            </div>
+                        </div>
+                        <div class="row justify-content-end border-bottom pb-3">
+                            <div class="col-4">
+                                Total
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="printBtn">
+                    Print
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
 <script src="../public/js/form-validstion.js"></script>
+<script src="../public/js/html2pdf.bundle.min.js"></script>
 <script>
-
-   
-
     function getByID(elementID) {
         return document.getElementById(elementID);
     }
@@ -341,8 +440,19 @@ if (isset($_SESSION['bookingAddStatus'])) {
     } else if ($error == "2") {
         echo "document.getElementById('btnErrorEmailModal').click();";
         echo $scriptSetValues;
+    }else if ($error == "3") {
+        echo "document.getElementById('btnModalBillPreview').click();";
     }
+
+    
     ?>
+
+    
+    document.getElementById('printBtn').addEventListener('click', () => {
+        var element = document.getElementById('print')
+        html2pdf().from(element).toPdf().save(getByID('bookingID').value+'.pdf')
+
+    })
 </script>
 
 <?php
