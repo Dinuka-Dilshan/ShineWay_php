@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 require('./partials/header.php');
 
@@ -39,7 +39,9 @@ if (isset($_SESSION['customerAddStatus'])) {
 
 ?>
 
-
+<div class="col-12 col-lg-4 p-3 fw-bold fs-5 text-white bg-success w-100 ">
+ADD CUSTOMER
+</div>
 
 <div class="container-fluid mt-3 ">
     <div class="row justify-content-center">

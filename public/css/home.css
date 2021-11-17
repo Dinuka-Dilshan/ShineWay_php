@@ -2,6 +2,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
+    
 }
 
 .w-15{
@@ -17,6 +18,25 @@ body{
     height: 10rem;
 }
 
+.print-hidden{
+    visibility: visible;
+}
+
+@media print {
+   .print-hidden{
+       visibility: hidden;
+   }
+}
+
+.avatar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 1px solid #fefeff;
+    object-fit: cover;
+
+}
+
 @media only screen and (max-width: 1200px) {
     .w-85{
         width: 100%;
@@ -28,3 +48,8 @@ body{
     }
 }
 
+.logout-btn{
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+}

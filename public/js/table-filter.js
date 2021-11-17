@@ -1,10 +1,13 @@
-//fun.js
+//
+
 function getByID(elementID) {
   return document.getElementById(elementID);
 }
 
 function easeFilterDataTable(searchBoxID, tableID) {
+ 
   document.getElementById(searchBoxID).addEventListener("keyup", () => {
+    
     var input, filter, table, tr, td, i;
     input = document.getElementById(searchBoxID);
     filter = input.value.toUpperCase();
@@ -34,5 +37,6 @@ function easeFilterDataTable(searchBoxID, tableID) {
     }
   });
 }
+
 
 export { easeFilterDataTable };

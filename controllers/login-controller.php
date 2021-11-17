@@ -15,7 +15,9 @@
 
        if($result->num_rows == 1){
            $_SESSION['userName'] =  $userData['name'];
+           $_SESSION['userEmailForAvatar'] =  $userData['email'];
            $_SESSION['userType'] =  $userData['user_type'];
+           $_SESSION['loggedin'] =  true;
            header('Location: home-controller.php');
        }else{
            $_SESSION['loginError'] = "Incorrect";

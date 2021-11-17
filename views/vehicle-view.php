@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 require('./partials/header.php');
 
@@ -8,16 +7,16 @@ $vehicleList = $_SESSION['vehicleList'];
 
 $error = -1; // -1 = no message to display 1 = successfull  0 = error
 
-if (isset($_SESSION['userEditStatus'])) {
-    if ($_SESSION['userEditStatus'] == 1) {
+if (isset($_SESSION['ownerEditStatus'])) {
+    if ($_SESSION['ownerEditStatus'] == 1) {
         $error = 1;
-    } else if ($_SESSION['userEditStatus'] == 0) {
+    } else if ($_SESSION['ownerEditStatus'] == 0) {
         $error = 0;
     } else {
         $error = -1;
     }
 
-    unset($_SESSION['userEditStatus']);
+    unset($_SESSION['ownerEditStatus']);
 }
 ?>
 
@@ -150,11 +149,11 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                            <form enctype="multipart/form-data" class=" needs-validation" novalidate action="../controllers/user-edit-controller.php" method="POST">
+                            <form enctype="multipart/form-data"  class=" needs-validation" novalidate action="../controllers/vehicle-edit-controller.php" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-12">
                                         <div class="form-outline">
-                                            <input pattern="^(?![ .]+$)[a-zA-Z .]*" id="Modal-edit-vehicle-number" name="vehicleNumber" type="text" id="form6Example1" class="form-control" required />
+                                            <input pattern="^[A-Z]{2,3}[-][0-9]{4}$" readonly id="Modal-edit-vehicle-number" name="vehicleNumber" type="text" id="form6Example1" class="form-control" required />
                                             <label class="form-label" for="form6Example1">Vehicle Number</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Vehicle Number</div>
@@ -165,7 +164,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="Modal-edit-brand" name="Brand" type="text" id="form6Example2" class="form-control" required />
+                                            <input  pattern="[a-zA-Z]{2,}" id="Modal-edit-brand" name="Brand" type="text" id="form6Example2" class="form-control" required />
                                             <label class="form-label" for="form6Example2">Brand</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid Brand</div>
@@ -174,7 +173,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 
                                     <div class="col-6">
                                         <div class="form-outline ">
-                                            <input pattern="^(?![0-9]+$)[a-zA-Z0-9 ,]{2,}$" name="model" id="Modal-edit-model" type="text" id="form6Example4" class="form-control" required />
+                                            <input  pattern="[a-zA-Z0-9 -]{2,}"  name="model" id="Modal-edit-model" type="text" id="form6Example4" class="form-control" required />
                                             <label class="form-label" for="form6Example4">model</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid Model</div>
@@ -183,11 +182,11 @@ if (isset($_SESSION['userEditStatus'])) {
                                 </div>
 
 
-                                <!-- Email input -->
+                                
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline ">
-                                            <input name="NIC" id="Modal-edit-NIC" type="text" class="form-control" required />
+                                            <input readonly name="NIC" id="Modal-edit-NIC" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example5">Owner NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -196,11 +195,11 @@ if (isset($_SESSION['userEditStatus'])) {
                                 </div>
 
 
-                                <!-- Number input -->
+                                
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="dailyPrice" id="Modal-edit-daily-price" type="number" id="form6Example6" class="form-control" required />
+                                            <input name="dailyPrice" id="Modal-edit-daily-price" type="number" id="form6Example6" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Daily Price</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid price</div>
@@ -209,7 +208,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="weeklyPrice" id="Modal-edit-weekly-price" type="number" class="form-control" required />
+                                            <input  name="weeklyPrice" id="Modal-edit-weekly-price" type="number" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Weekly Price</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid price</div>
@@ -224,7 +223,7 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <div class="row mb-3 ">
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="monthlyPrice" id="Modal-edit-monthly-price" type="number" class="form-control" required />
+                                            <input  name="monthlyPrice" id="Modal-edit-monthly-price" type="number" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Monthly Price</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid price</div>
@@ -233,7 +232,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
                                     <div class="col-6">
                                         <div class="form-outline">
-                                            <input pattern="[0-9]{10}" name="ownerPrice" id="Modal-edit-owner-price" type="number" class="form-control" required />
+                                            <input  name="ownerPrice" id="Modal-edit-owner-price" type="number" class="form-control" required />
                                             <label class="form-label" for="form6Example6">Owner Payment</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid price</div>
@@ -246,14 +245,14 @@ if (isset($_SESSION['userEditStatus'])) {
                                     <div class="col-12 ">
                                         <div class="bg-white ">
                                             <label class="form-label bg-white mb-0 pb-0" for="customFile">Overall Image</label>
-                                            <input name="overallImage" type="file" class="form-control bg-white " id="overallImage" accept="image/*" />
+                                            <input  name="overallImage" type="file" class="form-control bg-white " id="overallImage" accept="image/*" />
                                         </div>
                                     </div>
 
                                     <div class="col-12 ">
                                         <div class="bg-white ">
                                             <label class="form-label bg-white mb-0 pb-0" for="customFile">Inside Image</label>
-                                            <input name="insideImage" type="file" class="form-control bg-white " id="insideImage" accept="image/*" />
+                                            <input  name="insideImage" type="file" class="form-control bg-white " id="insideImage" accept="image/*" />
                                         </div>
                                     </div>
 
@@ -271,7 +270,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
 
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Vehicle details</button>
+                                <button type="submit" name="submit-edit-vehicle" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Vehicle details</button>
                             </form>
                         </div>
                     </div>
@@ -369,6 +368,7 @@ if (isset($_SESSION['userEditStatus'])) {
     const modalEditWeeklyPrice = document.getElementById('Modal-edit-weekly-price');
     const modalEditMonthlyPrice = document.getElementById('Modal-edit-monthly-price');
     const modalEditOwnerPrice = document.getElementById('Modal-edit-owner-price');
+    const modalEditvehicletype = document.getElementById('typeSelect');
 
     function cellClickFire(x) {
         vehicleImage.src = `../public/img/Vehicles/${table.rows[x.rowIndex].cells[1].innerHTML}-inside.jpg`;
@@ -384,6 +384,16 @@ if (isset($_SESSION['userEditStatus'])) {
         modalEditOwnerPrice.value = table.rows[x.rowIndex].cells[9].innerHTML;
         modalTitle.innerHTML = "Edit Vehicle: " + table.rows[x.rowIndex].cells[1].innerHTML;
         modalVehicleImageViewTitle.innerHTML = table.rows[x.rowIndex].cells[1].innerHTML;
+
+        const vehicleType = table.rows[x.rowIndex].cells[4].innerHTML;
+
+        if(vehicleType == 'Car'){
+            modalEditvehicletype.value = 'Car'
+        }else if(vehicleType == 'Van'){
+            modalEditvehicletype.value = 'Van'
+        }else{
+            modalEditvehicletype.value = 'Bike'
+        }
     }
 
 

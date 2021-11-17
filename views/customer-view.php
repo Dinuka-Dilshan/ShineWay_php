@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 require('./partials/header.php');
 
@@ -120,7 +120,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="customer-edit-NIC" type="text" class="form-control" required />
+                                            <input readonly pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})" id="nic" name="customer-edit-NIC" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example2">NIC</label>
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Enter a valid NIC</div>
@@ -170,7 +170,7 @@ if (isset($_SESSION['customerEditStatus'])) {
 
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input pattern="^[A-Z]{1}[1-9]{7,8}[A-Z]{0,1}$" name="customer-edit-license" id="license" type="text" class="form-control" required />
+                                            <input readonly pattern="^[A-Z]{1}[1-9]{7,8}[A-Z]{0,1}$" name="customer-edit-license" id="license" type="text" class="form-control" required />
                                             <label class="form-label" for="form6Example6">License</label>
                                             <div class="valid-feedback ">Looks good!</div>
                                             <div class="invalid-feedback ">Enter a valid licence number</div>
