@@ -1,5 +1,11 @@
 <?php
 require('../config/login-config.php');
+
+$userType='';
+if(isset($_SESSION['userType'])){
+    $userType = $_SESSION['userType'];
+}
+
 ?>
 
 
@@ -50,7 +56,7 @@ require('../config/login-config.php');
                     </ul>
                 </div>
 
-                <div class="btn-group my-2">
+                <div class="btn-group my-2 <?php if($userType=='User')echo 'd-none' ?>">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
                         Owner
                     </button>
@@ -76,7 +82,7 @@ require('../config/login-config.php');
                     </ul>
                 </div>
 
-                <div class="btn-group my-2">
+                <div class="btn-group my-2 <?php if($userType=='User')echo 'd-none' ?>">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
                         User
                     </button>
@@ -131,8 +137,8 @@ require('../config/login-config.php');
                             <a class="nav-link" href="../controllers/booking-view-controller.php">Payment</a>
                             <a class="nav-link" href="../controllers/customer-view-controller.php">Customers</a>
                             <a class="nav-link" href="../controllers/vehicle-view-controller.php">Vehicles</a>
-                            <a class="nav-link" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
-                            <a class="nav-link" href="../controllers/user-view-controller.php">Users</a>
+                            <a class="nav-link <?php if($userType=='User')echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
+                            <a <?php ?> class="nav-link <?php if($userType=='User')echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
                             <a class="nav-link" href="../controllers/booking-view-controller.php">Reports</a>
 
                         </div>
