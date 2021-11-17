@@ -4,7 +4,7 @@
 
     require("../config/db.php"); 
 
-    session_start();
+    require('../config/login-config.php');
 
     
 

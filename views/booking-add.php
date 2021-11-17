@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 require('./partials/header.php');
 
@@ -115,7 +115,9 @@ if (isset($_SESSION['bookingAddStatus'])) {
 
 ?>
 
-
+<div class="col-12 col-lg-4 p-2 fw-bold fs-5 text-white bg-success w-100 ">
+ADD BOOKING
+</div>
 
 <div class="container-fluid print-hidden">
     <div class="row justify-content-center">
@@ -221,7 +223,7 @@ if (isset($_SESSION['bookingAddStatus'])) {
 
                         <div class="row">
                             <div class="col-6"><button type="reset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button></div>
-                            <div class="col-6"><button type="submit" name="submit-add-booking" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add Booking</button></div>
+                            <div class="col-6"><button type="submit" name="submit-add-booking" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add</button></div>
                         </div>
                     </form>
                 </div>

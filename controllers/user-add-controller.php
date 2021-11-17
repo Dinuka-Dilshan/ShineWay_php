@@ -1,7 +1,8 @@
 <?php
-require("../config/db.php");
+require('../config/login-config.php');
+require('../config/db.php');
 
-session_start();
+
 
 if (isset($_POST['submit-add-user'])) {
     $name = $_POST['name'];
@@ -10,6 +11,7 @@ if (isset($_POST['submit-add-user'])) {
     $address = $_POST['address'];
     $NIC = $_POST['NIC'];
     $userType = $_POST['userType'];
+    $password = md5($_POST['password']);
 
     $emailCheck = "SELECT  `email` FROM `users` WHERE `email` = '$email'";
     $result = $connection->query($emailCheck);
@@ -22,7 +24,7 @@ if (isset($_POST['submit-add-user'])) {
         $_SESSION['faildToAddNIC'] = $_POST['NIC'];
         $_SESSION['faildToAddUserType'] = $_POST['userType'];
     }else{
-        $query = "INSERT INTO `users`(`NIC`, `name`, `user_type`, `email`, `Telephone`, `Address`) VALUES ('$NIC','$name','$userType','$email','$phone','$address')";
+        $query = "INSERT INTO `users`(`NIC`, `name`, `user_type`, `email`, `Telephone`, `Address`, `password`) VALUES ('$NIC','$name','$userType','$email','$phone','$address','$password')";
 
         $result = $connection->query($query);
     

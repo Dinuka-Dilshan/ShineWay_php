@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+require('../config/login-config.php');
 require("../config/db.php");
 
 if (isset($_POST['submit-edit-booking'])) {

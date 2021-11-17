@@ -1,4 +1,5 @@
 <?php
+require('../config/login-config.php');
 require("../config/db.php");
 
 session_start();

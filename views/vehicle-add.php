@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 require('./partials/header.php');
 
@@ -72,7 +72,9 @@ if (isset($_SESSION['vehicleAddStatus'])) {
 
 ?>
 
-
+<div class="col-12 col-lg-4 p-2 fw-bold fs-5 text-white bg-success w-100 ">
+ADD VEHICLE
+</div>
 
 <div class="container-fluid ">
     <div class="row justify-content-center">

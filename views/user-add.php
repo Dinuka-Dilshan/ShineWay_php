@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 require('./partials/header.php');
 
@@ -40,9 +40,11 @@ if (isset($_SESSION['userAddStatus'])) {
 
 ?>
 
+<div class="col-12 col-lg-4 p-3 fw-bold fs-5 text-white bg-success w-100 ">
+ADD USER
+</div>
 
-
-<div class="container-fluid mt-3 ">
+<div class="container-fluid mt-1 ">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-6">
             <div class="card border shadow-0 my-3 ">
@@ -89,14 +91,23 @@ if (isset($_SESSION['userAddStatus'])) {
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline ">
-                                    <input name="email" id="email" type="email" class="form-control" required />
+                                    <input autocomplete="off" name="email" id="email" type="email" class="form-control" required />
                                     <label class="form-label" for="form6Example5">Email</label>
                                     <div class="valid-feedback">Looks good!</div>
                                     <div class="invalid-feedback">Enter a valid Email</div>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input  id="password"  name="password" type="password"  autocomplete="off" class="form-control" required />
+                                    <label class="form-label" for="form6Example1">Password</label>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Enter a valid Password</div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Number input -->
                         <div class="row mb-3">
@@ -109,7 +120,7 @@ if (isset($_SESSION['userAddStatus'])) {
                                 </div>
                             </div>
                         </div>
-
+                        
 
                         <div class="row mb-4">
                             <div class="col-12 ">
@@ -127,6 +138,8 @@ if (isset($_SESSION['userAddStatus'])) {
                                     <option value="User"> User</option>
                                 </select>
                             </div>
+
+                            
 
                         </div>
 
