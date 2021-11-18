@@ -6,6 +6,83 @@ $userType='';
 if(isset($_SESSION['userType'])){
     $userType = $_SESSION['userType'];
 }
+
+    $january;
+    $February  ;
+    $March ;
+    $April ;
+    $May ;
+    $June ;
+    $July ;
+    $August ;
+    $September ;
+    $Octomber ;
+    $November ;
+    $December ;
+
+if(isset($_SESSION['january'])){
+    $january = $_SESSION['january'];
+
+}
+
+if(isset($_SESSION['february'])){
+    $february = $_SESSION['february'];
+
+}
+if(isset($_SESSION['March'])){
+    $March = $_SESSION['March'];
+    
+}
+
+if(isset($_SESSION['April'])){
+    $April = $_SESSION['April'];
+    
+}
+if(isset($_SESSION['May'])){
+    $May = $_SESSION['May'];
+}
+
+if(isset($_SESSION['June'])){
+    $June = $_SESSION['June'];
+
+}
+
+if(isset($_SESSION['July'])){
+    $July = $_SESSION['July'];
+
+}
+
+if(isset($_SESSION['August'])){
+    $August = $_SESSION['August'];
+    
+}
+
+if(isset($_SESSION['September'])){
+    $September = $_SESSION['September'];
+    
+}
+
+if(isset($_SESSION['Octomber'])){
+    $Octomber = $_SESSION['Octomber'];
+    
+}
+
+if(isset($_SESSION['November'])){
+    $November = $_SESSION['November'];
+    
+}
+
+if(isset($_SESSION['December'])){
+    $December = $_SESSION['December'];
+    
+}
+
+
+
+if(empty($Octomber)){
+    $Octomber = 0;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -160,7 +237,7 @@ if(isset($_SESSION['userType'])){
                 <div class="row g-3 mt-lg-3">
 
                     <div class="col-12 col-lg-3">
-                        <div class="card">
+                        <div class="card border">
                             <div class="card-body">
 
                                 <span class="avatar"><img class="avatar" src="../public/img/Users/<?php echo $avatar ?>.jpg" alt=""></span>
@@ -170,7 +247,7 @@ if(isset($_SESSION['userType'])){
                     </div>
 
                     <div class="col-12 col-lg-3">
-                        <div class="card">
+                        <div class="card border">
                             <div class="card-header fw-bold">
                                 Cars
                             </div>
@@ -181,7 +258,7 @@ if(isset($_SESSION['userType'])){
                     </div>
 
                     <div class="col-12 col-lg-3">
-                        <div class="card">
+                        <div class="card border">
                             <div class="card-header fw-bold">
                                 Vans
                             </div>
@@ -192,7 +269,7 @@ if(isset($_SESSION['userType'])){
                     </div>
 
                     <div class="col-12 col-lg-3">
-                        <div class="card">
+                        <div class="card border">
                             <div class="card-header fw-bold">
                                 Bikes
                             </div>
@@ -206,6 +283,52 @@ if(isset($_SESSION['userType'])){
 
 
                 <!--table-->
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+
+<div class="container my-2 border">
+    <div class="col-12">
+    <canvas id="myChart" width="400" height="160"></canvas>
+    </div>
+</div>
+                
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octomber', 'November', 'December'],
+        datasets: [{
+            label: 'Income In Each Month',
+            data: [<?php echo $january['January']?$january['January']:0?>, <?php echo $february['February']?$february['February']:0?>, <?php echo $March['March']?$March['March']:0?>, <?php echo $April['April']? $April['April']:0?>, <?php echo $May['May']?$May['May']:0?>, <?php echo $June['June']?$June['June']:0?>,<?php echo $July['July']?$July['July']:0?>,<?php echo $August['August']?$August['August']:0?>,<?php echo $September['September']?$September['September']:0?>,<?php echo $Octomber['Octomber']?$Octomber['Octomber']:0?>,<?php echo $November['November']?$November['November']:0?>,<?php echo $December['December']?$December['December']:0.0?>],
+            backgroundColor: [
+                'rgba(255, 99, 132,0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
 
                 <div class="row g-3 mt-lg-3">
                     <div class="col-12">
