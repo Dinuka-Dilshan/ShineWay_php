@@ -2,84 +2,73 @@
 require('../config/login-config.php');
 $allAvailableVehicles = $_SESSION['allAvailableVehicles'];
 $avatar = $_SESSION['userEmailForAvatar'];
-$userType='';
-if(isset($_SESSION['userType'])){
+$userType = '';
+if (isset($_SESSION['userType'])) {
     $userType = $_SESSION['userType'];
 }
 
-    $january;
-    $February  ;
-    $March ;
-    $April ;
-    $May ;
-    $June ;
-    $July ;
-    $August ;
-    $September ;
-    $Octomber ;
-    $November ;
-    $December ;
+$january;
+$February;
+$March;
+$April;
+$May;
+$June;
+$July;
+$August;
+$September;
+$Octomber;
+$November;
+$December;
 
-if(isset($_SESSION['january'])){
+if (isset($_SESSION['january'])) {
     $january = $_SESSION['january'];
-
 }
 
-if(isset($_SESSION['february'])){
+if (isset($_SESSION['february'])) {
     $february = $_SESSION['february'];
-
 }
-if(isset($_SESSION['March'])){
+if (isset($_SESSION['March'])) {
     $March = $_SESSION['March'];
-    
 }
 
-if(isset($_SESSION['April'])){
+if (isset($_SESSION['April'])) {
     $April = $_SESSION['April'];
-    
 }
-if(isset($_SESSION['May'])){
+if (isset($_SESSION['May'])) {
     $May = $_SESSION['May'];
 }
 
-if(isset($_SESSION['June'])){
+if (isset($_SESSION['June'])) {
     $June = $_SESSION['June'];
-
 }
 
-if(isset($_SESSION['July'])){
+if (isset($_SESSION['July'])) {
     $July = $_SESSION['July'];
-
 }
 
-if(isset($_SESSION['August'])){
+if (isset($_SESSION['August'])) {
     $August = $_SESSION['August'];
-    
 }
 
-if(isset($_SESSION['September'])){
+if (isset($_SESSION['September'])) {
     $September = $_SESSION['September'];
-    
 }
 
-if(isset($_SESSION['Octomber'])){
+if (isset($_SESSION['Octomber'])) {
     $Octomber = $_SESSION['Octomber'];
-    
 }
 
-if(isset($_SESSION['November'])){
+if (isset($_SESSION['November'])) {
     $November = $_SESSION['November'];
-    
 }
 
-if(isset($_SESSION['December'])){
+if (isset($_SESSION['December'])) {
     $December = $_SESSION['December'];
-    
 }
 
 
 
-if(empty($Octomber)){
+if (empty($Octomber)) {
     $Octomber = 0;
 }
 
@@ -102,7 +91,7 @@ if(empty($Octomber)){
     <script defer src="../public/js/sideNav.js"></script>
 
     <div class="vh-100 w-100 d-flex">
-        <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden px-2 pt-3 " id='sideNav'>
+        <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden px-2 pt-3 bg-dark" id='sideNav'>
 
 
             <div class="d-flex justify-content-center flex-column mt-5">
@@ -132,7 +121,7 @@ if(empty($Octomber)){
                     </ul>
                 </div>
 
-                <div class="btn-group my-2 <?php if($userType=='User')echo 'd-none' ?>">
+                <div class="btn-group my-2 <?php if ($userType == 'User') echo 'd-none' ?>">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
                         Owner
                     </button>
@@ -158,7 +147,7 @@ if(empty($Octomber)){
                     </ul>
                 </div>
 
-                <div class="btn-group my-2 <?php if($userType=='User')echo 'd-none' ?>">
+                <div class="btn-group my-2 <?php if ($userType == 'User') echo 'd-none' ?>">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
                         User
                     </button>
@@ -202,7 +191,7 @@ if(empty($Octomber)){
                 <div class="container-fluid">
                     <a id="btn-side-nav" class="btn btn-primary d-none d-xl-block" style="background-color: #1266F1;" href="#!" role="button"><i class="fas fa-align-justify"></i>
                     </a>
-                    <a class="navbar-brand text-muted ms-2" href="../controllers/home-controller.php">ShineWay</a>
+                    <a class="navbar-brand text-muted ms-3" href="../controllers/home-controller.php">ShineWay</a>
 
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
                         <i class="fas fa-bars"></i>
@@ -214,9 +203,9 @@ if(empty($Octomber)){
                             <a class="nav-link" href="../controllers/booking-view-controller.php">Payment</a>
                             <a class="nav-link" href="../controllers/customer-view-controller.php">Customers</a>
                             <a class="nav-link" href="../controllers/vehicle-view-controller.php">Vehicles</a>
-                            <a class="nav-link <?php if($userType=='User')echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
-                            <a class="nav-link <?php if($userType=='User')echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Reports</a>
+                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
+                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
+                            
 
                         </div>
 
@@ -234,7 +223,7 @@ if(empty($Octomber)){
             <!--content-->
 
             <div class="container-fluid ">
-                <div class="row g-3 mt-lg-3">
+                <div class="row g-3 mt-lg-1">
 
                     <div class="col-12 col-lg-3">
                         <div class="card border">
@@ -285,49 +274,69 @@ if(empty($Octomber)){
                 <!--table-->
                 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 
-<div class="container my-2 border">
-    <div class="col-12">
-    <canvas id="myChart" width="400" height="160"></canvas>
-    </div>
-</div>
+                <div class="row  mt-lg-1 <?php if($userType=='User')echo 'd-none' ?>">
+                    <div class="col-12">
+                        <div class="card shadow-0 border">
+                            <div class="card-header bg-danger">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-between">
+                                        <div class="col-12 col-lg-4 m-1 fw-bold fs-5 text-white">
+                                            INCOME PER MONTH
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="container my-2 mt-0 border ">
+                                    
+                                        <canvas id="myChart" width="400" height="145"></canvas>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-<script>
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octomber', 'November', 'December'],
-        datasets: [{
-            label: 'Income In Each Month',
-            data: [<?php echo $january['January']?$january['January']:0?>, <?php echo $february['February']?$february['February']:0?>, <?php echo $March['March']?$March['March']:0?>, <?php echo $April['April']? $April['April']:0?>, <?php echo $May['May']?$May['May']:0?>, <?php echo $June['June']?$June['June']:0?>,<?php echo $July['July']?$July['July']:0?>,<?php echo $August['August']?$August['August']:0?>,<?php echo $September['September']?$September['September']:0?>,<?php echo $Octomber['Octomber']?$Octomber['Octomber']:0?>,<?php echo $November['November']?$November['November']:0?>,<?php echo $December['December']?$December['December']:0.0?>],
-            backgroundColor: [
-                'rgba(255, 99, 132,0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script>
+
+
+                <script>
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octomber', 'November', 'December'],
+                            datasets: [{
+                                label: 'Income In Each Month',
+                                data: [<?php echo $january['January'] ? $january['January'] : 0 ?>, <?php echo $february['February'] ? $february['February'] : 0 ?>, <?php echo $March['March'] ? $March['March'] : 0 ?>, <?php echo $April['April'] ? $April['April'] : 0 ?>, <?php echo $May['May'] ? $May['May'] : 0 ?>, <?php echo $June['June'] ? $June['June'] : 0 ?>, <?php echo $July['July'] ? $July['July'] : 0 ?>, <?php echo $August['August'] ? $August['August'] : 0 ?>, <?php echo $September['September'] ? $September['September'] : 0 ?>, <?php echo $Octomber['Octomber'] ? $Octomber['Octomber'] : 0 ?>, <?php echo $November['November'] ? $November['November'] : 0 ?>, <?php echo $December['December'] ? $December['December'] : 0.0 ?>],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132,0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
 
 
                 <div class="row g-3 mt-lg-3">

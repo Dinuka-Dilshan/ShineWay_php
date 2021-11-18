@@ -24,7 +24,7 @@ if (isset($_SESSION['ownerEditStatus'])) {
 
 <!--table-->
 
-<div class="row g-3 mt-lg-3">
+<div class="row g-3 mt-lg-3 mx-0">
     <div class="col-12">
         <div class="card shadow-0 border">
             <div class="card-header bg-success">

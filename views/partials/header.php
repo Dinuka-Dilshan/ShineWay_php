@@ -27,7 +27,7 @@ if(isset($_SESSION['userType'])){
     <script defer src="../public/js/sideNav.js"></script>
 
     <div class="vh-100 w-100 d-flex">
-        <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden px-2 pt-3 " id='sideNav'>
+        <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden px-2 pt-3 bg-dark" id='sideNav'>
 
             <div class="d-flex justify-content-center flex-column mt-5">
                 <div class="btn-group my-2 ">
@@ -119,14 +119,14 @@ if(isset($_SESSION['userType'])){
                 </div>
         </div>
 
-        <div class="vh-100 w-85 overflow-y-scroll" id='mainContent'>
+        <div class="vh-100 w-85 overflow-y-scroll " id='mainContent'>
             <!--navbar-->
             <nav class="navbar navbar-expand-lg navbar-white  bg-white shadow-0 border-bottom">
                 <div class="container-fluid">
                     <a id="btn-side-nav" class="btn btn-primary d-none d-xl-block" style="background-color: #1266F1;" href="#!" role="button"><i class="fas fa-align-justify"></i>
                     </a>
 
-                    <a class="navbar-brand text-muted ms-1" href="../controllers/home-controller.php">ShineWay</a>
+                    <a class="navbar-brand text-muted ms-3" href="../controllers/home-controller.php">ShineWay</a>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -139,7 +139,7 @@ if(isset($_SESSION['userType'])){
                             <a class="nav-link" href="../controllers/vehicle-view-controller.php">Vehicles</a>
                             <a class="nav-link <?php if($userType=='User')echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
                             <a <?php ?> class="nav-link <?php if($userType=='User')echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Reports</a>
+                            
 
                         </div>
 
