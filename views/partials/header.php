@@ -28,8 +28,11 @@ if(isset($_SESSION['userType'])){
 
     <div class="vh-100 w-100 d-flex">
         <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden px-2 pt-3 bg-dark" id='sideNav'>
-
+        <div class="text-white fs-3 d-flex ms-3 align-items-center">
+            <div><i class="fas fa-car me-2"></i>Shineway</div>
+</div>
             <div class="d-flex justify-content-center flex-column mt-5">
+                
                 <div class="btn-group my-2 ">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
                         Booking
@@ -121,12 +124,12 @@ if(isset($_SESSION['userType'])){
 
         <div class="vh-100 w-85 overflow-y-scroll " id='mainContent'>
             <!--navbar-->
-            <nav class="navbar navbar-expand-lg navbar-white  bg-white shadow-0 border-bottom">
+            <nav class="navbar navbar-expand-lg navbar-white  bg-dark shadow-0 border-bottom">
                 <div class="container-fluid">
                     <a id="btn-side-nav" class="btn btn-primary d-none d-xl-block" style="background-color: #1266F1;" href="#!" role="button"><i class="fas fa-align-justify"></i>
                     </a>
 
-                    <a class="navbar-brand text-muted ms-3" href="../controllers/home-controller.php">ShineWay</a>
+                    <a class="navbar-brand text-white  ms-3 " href="../controllers/home-controller.php">ShineWay</a>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
                         <i class="fas fa-bars"></i>
                     </button>

@@ -39,15 +39,13 @@ if (isset($_SESSION['customerAddStatus'])) {
 
 ?>
 
-<div class="col-12 col-lg-4 p-3 fw-bold fs-5 text-white bg-success w-100 ">
-ADD CUSTOMER
-</div>
 
-<div class="container-fluid mt-3 ">
+
+<div class="container-fluid mt-5 ">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-8">
             <div class="card border shadow-0 my-3 ">
-                <div class="card-header fs-3">
+                <div class="card-header text-white fs-3 bg-danger pt-2">
                     ADD CUSTOMER
                 </div>
                 <div class="card-body">

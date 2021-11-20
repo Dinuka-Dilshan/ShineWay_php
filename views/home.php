@@ -93,7 +93,9 @@ if (empty($Octomber)) {
     <div class="vh-100 w-100 d-flex">
         <div class="vh-100 w-15 d-none d-xl-block border-end overflow-hidden px-2 pt-3 bg-dark" id='sideNav'>
 
-
+            <div class="text-white fs-3 d-flex ms-3 align-items-center">
+            <div><i class="fas fa-car me-2"></i>Shineway</div>
+</div>
             <div class="d-flex justify-content-center flex-column mt-5">
                 <div class="btn-group my-2">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -175,7 +177,7 @@ if (empty($Octomber)) {
                 <div class="logout-btn">
 
                     <form action="../config/logout.php">
-                        <input class="btn btn-primary " type="submit" value="Logout" />
+                    <input class="btn btn-primary " type="submit" value="Logout" />
                     </form>
 
                 </div>
@@ -185,13 +187,13 @@ if (empty($Octomber)) {
 
         </div>
 
-        <div class="vh-100 w-85 overflow-y-scroll " id='mainContent'>
+        <div class="vh-100 w-85 overflow-y-scroll  " id='mainContent'>
             <!--navbar-->
-            <nav class="navbar navbar-expand-lg navbar-white  bg-white shadow-0 border-bottom">
-                <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-white  bg-dark ms-0 shadow-0 border-bottom">
+                <div class="container-fluid ">
                     <a id="btn-side-nav" class="btn btn-primary d-none d-xl-block" style="background-color: #1266F1;" href="#!" role="button"><i class="fas fa-align-justify"></i>
                     </a>
-                    <a class="navbar-brand text-muted ms-3" href="../controllers/home-controller.php">ShineWay</a>
+                    <a class="navbar-brand text-white ms-3" href="../controllers/home-controller.php">Dashboard</a>
 
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
                         <i class="fas fa-bars"></i>
@@ -221,37 +223,37 @@ if (empty($Octomber)) {
             </nav>
 
             <!--content-->
-
-            <div class="container-fluid ">
+           
+            <div class="container-fluid bg-light">
                 <div class="row g-3 mt-lg-1">
 
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-3 py-2">
                         <div class="card border">
-                            <div class="card-body">
+                            <div class="card-body fs-5 text-white light-green" >
 
-                                <span class="avatar"><img class="avatar" src="../public/img/Users/<?php echo $avatar ?>.jpg" alt=""></span>
+                                <span class="avatar "><img class="avatar" src="../public/img/Users/<?php echo $avatar ?>.jpg" alt=""></span>
                                 Hi <?php echo $_SESSION['userName']  ?> !!
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-3">
-                        <div class="card border">
-                            <div class="card-header fw-bold">
+                        <div class="card border ">
+                            <div class="card-header bg-secondary text-white fw-bold text-center fs-5">
                                 Cars
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-center fs-3">
                                 <?php echo $_SESSION['carCount'] ?>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-3">
-                        <div class="card border">
-                            <div class="card-header fw-bold">
+                        <div class="card border  ">
+                            <div class="card-header fw-bold bg-success text-white text-center fs-5">
                                 Vans
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-center fs-3">
                                 <?php echo $_SESSION['vanCount'] ?>
                             </div>
                         </div>
@@ -259,10 +261,10 @@ if (empty($Octomber)) {
 
                     <div class="col-12 col-lg-3">
                         <div class="card border">
-                            <div class="card-header fw-bold">
+                            <div class="card-header text-white fw-bold bg-warning text-center fs-5">
                                 Bikes
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-center fs-3">
                                 <?php echo $_SESSION['bikeCount']  ?>
                             </div>
                         </div>
@@ -274,7 +276,7 @@ if (empty($Octomber)) {
                 <!--table-->
                 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 
-                <div class="row  mt-lg-1 <?php if($userType=='User')echo 'd-none' ?>">
+                <div class="row  mt-lg-2 <?php if($userType=='User')echo 'd-none' ?>">
                     <div class="col-12">
                         <div class="card shadow-0 border">
                             <div class="card-header bg-danger">
