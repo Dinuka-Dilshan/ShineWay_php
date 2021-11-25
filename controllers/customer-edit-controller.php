@@ -3,6 +3,8 @@ require('../config/login-config.php');
 
 require("../config/db.php");
 
+
+
 if (isset($_POST['submit-edit-customer'])) {
     $name = $_POST['customer-edit-name'];
     $email = $_POST['customer-edit-email'];

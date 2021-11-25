@@ -22,6 +22,9 @@
                 $result = $connection->query($query);
 
 
+               
+                
+
                 $vehicleNumber = $bookingDetails[0]['Vehicle_num'];
                 $vehicleDetails = "SELECT * FROM `vehicle` WHERE `Vehicle_num` = '$vehicleNumber';";
                 $result = $connection->query($vehicleDetails);
@@ -50,6 +53,15 @@
                 }
 
                 $priceWithoutPrePayements = $price;
+                $today = date("Y-m-d");
+
+                $query = "INSERT INTO `payment`(`Booking_ID`, `Amount`, `date`) VALUES (' $bookingID','$priceWithoutPrePayements','$today');";
+
+                $result = $connection->query($query);
+
+
+
+
                 $price = $price - ($bookingDetails[0]['Deposit_Amount'] + $bookingDetails[0]['Advanced_Payment']);
                 $_SESSION['billAmount'] = $price;
                 $_SESSION['bill-vehicleDetails'] = $vehicleDetails;

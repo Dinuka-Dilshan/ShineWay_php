@@ -1,4 +1,5 @@
 <?php
+$heading = 'MAKE PAYMENTS';
 include('./partials/header.php');
 require('../config/db.php');
 if (isset($_SESSION['priceWithoutPrePayements']) && isset($_SESSION['billAmount']) && isset($_SESSION['bill-vehicleDetails'])) {
@@ -15,10 +16,11 @@ if (isset($_SESSION['priceWithoutPrePayements']) && isset($_SESSION['billAmount'
 
 ?>
 
+<div class="m-2 border ">
 <div class="col-12 col-lg-4 p-3 fw-bold fs-5 text-white bg-success w-100 ">
 MAKE PAYMENT
 </div>
-<div class="container-fluid print-hidden">
+<div class="container-fluid print-hidden mt-5 p-2 mb-3">
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-lg-6 ">
             <div class="card border shadow-0 my-3 ">
@@ -64,6 +66,7 @@ MAKE PAYMENT
         </div>
 
     </div>
+</div>
 </div>
 
 <button type="button" class="btn btn-primary d-none " data-mdb-toggle="modal" data-mdb-target="#modalBillPreview" id="btnModalBillPreview">

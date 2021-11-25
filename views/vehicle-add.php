@@ -1,7 +1,7 @@
 <?php
 
 
-
+$heading = 'ADD VEHICLES';
 require('./partials/header.php');
 
 
@@ -72,15 +72,13 @@ if (isset($_SESSION['vehicleAddStatus'])) {
 
 ?>
 
-<div class="col-12 col-lg-4 p-2 fw-bold fs-5 text-white bg-success w-100 ">
-ADD VEHICLE
-</div>
+
 
 <div class="container-fluid ">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-8">
             <div class="card border shadow-0 my-3 ">
-                <div class="card-header fs-3">
+                <div class="card-header fs-3 bg-danger text-white">
                     ADD VEHICLE
                 </div>
                 <div class="card-body">

@@ -1,7 +1,7 @@
 <?php
 
 
-
+$heading = 'VIEW ALL USERS';
 require('./partials/header.php');
 
 $userList = $_SESSION['userList'];
@@ -24,10 +24,10 @@ if (isset($_SESSION['userEditStatus'])) {
 
 <!--table-->
 
-<div class="row g-3 mt-lg-3">
+<div class="row g-3 mt-lg-3 mx-0">
     <div class="col-12">
         <div class="card shadow-0 border">
-            <div class="card-header bg-success">
+            <div class="card-header bg-main">
                 <div class="container-fluid">
                     <div class="row justify-content-between">
                         <div class="col-12 col-lg-4 m-1 fw-bold fs-5 text-white">
@@ -72,15 +72,15 @@ if (isset($_SESSION['userEditStatus'])) {
                                 <td class="d-none"><?php echo $user['ID'] ?></td>
                                 <form action="../controllers/user-view-controller.php" method="post">
                                     <td>
-                                        <button name="submit-delete-user" value="<?php echo $user['ID'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
-                                            <i class="fas fa-times"></i>
+                                        <button name="submit-delete-user" value="<?php echo $user['ID'] ?>" type="submit" class=" px-3" style="border-radius: 0.8rem; border:none ;background-color:inherit">
+                                            <i class="fas fa-times text-danger"></i>
                                         </button>
                                     </td>
                                 </form>
                                 <!--<form action="../controllers/user-edit-controller.php" method="post">-->
                                 <td>
-                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class="btn btn-secondary btn-sm px-3">
-                                        <i class="fas fa-user-edit"></i>
+                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class=" px-3" style="border-radius: 0.8rem; border:none ;background-color:inherit">
+                                        <i class="fas fa-user-edit" style="color: #5BC980;"></i>
                                     </button>
                                 </td>
                                 <!--</form>-->
@@ -108,7 +108,7 @@ if (isset($_SESSION['userEditStatus'])) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 text-align-center img-thumbnail d-flex justify-content-center">
-                            <img class="modal-img" id="user-image" src="../public/img/Users/jadinukadilshan@gmail.com.jpg" alt="Cannot Load Image">
+                            <img class="modal-img" id="user-image" src="../public/img/Users/jadinukadilshan@gmail.com.jpg" alt="Cannot Load Image" style="object-fit: cover; width:fit-content">
                         </div>
                     </div>
 
@@ -117,7 +117,7 @@ if (isset($_SESSION['userEditStatus'])) {
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                <button type="button" class="btn bg-main text-white" data-mdb-dismiss="modal">
                     Close
                 </button>
             </div>
@@ -223,18 +223,18 @@ if (isset($_SESSION['userEditStatus'])) {
 
                                 <input type="hidden" name="submit-edit-userID" id="submit-edit-userID" value="">
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-user" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update User</button>
+                                <button type="submit" name="submit-edit-user" class="btn bg-main text-white btn-block fs-6 py-2 mb-2">Update User</button>
                             </form>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
                     Close
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
