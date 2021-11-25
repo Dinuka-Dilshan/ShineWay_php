@@ -1,7 +1,7 @@
 <?php
 
 
-
+$heading = 'ADD USERS';
 require('./partials/header.php');
 
 

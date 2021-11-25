@@ -1,7 +1,7 @@
 <?php
 
 
-
+$heading = 'ADD VEHICLES';
 require('./partials/header.php');
 
 

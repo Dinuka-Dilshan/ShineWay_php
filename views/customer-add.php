@@ -1,7 +1,7 @@
 <?php
 
 
-
+$heading = 'ADD CUSTOMERS';
 require('./partials/header.php');
 
 

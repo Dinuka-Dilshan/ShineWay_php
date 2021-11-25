@@ -1,6 +1,6 @@
 <?php
 
-
+$heading = 'ADD OWNERS';
 
 require('./partials/header.php');
 

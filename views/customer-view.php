@@ -1,6 +1,6 @@
 <?php
 
-
+$heading = 'VIEW ALL CUSTOMERS';
 
 require('./partials/header.php');
 
@@ -27,7 +27,7 @@ if (isset($_SESSION['customerEditStatus'])) {
 <div class="row g-3 mt-lg-3 mx-0">
     <div class="col-12">
         <div class="card shadow-0 border">
-            <div class="card-header bg-success">
+            <div class="card-header bg-main">
                 <div class="container-fluid">
                     <div class="row justify-content-between">
                         <div class="col-12 col-lg-4 m-1 fw-bold fs-5 text-white">
@@ -52,7 +52,7 @@ if (isset($_SESSION['customerEditStatus'])) {
                             <th class="fs-6 fw-bold" scope="col">#</th>
                             <th class="fs-6 fw-bold" scope="col">Name</th>
                             <th class="fs-6 fw-bold" scope="col">NIC</th>
-                            <th class="fs-6 fw-bold" scope="col">Lisence No:</th>
+                            <th class="fs-6 fw-bold" scope="col">Lisence:</th>
                             <th class="fs-6 fw-bold" scope="col">Email</th>
                             <th class="fs-6 fw-bold" scope="col">Telephone</th>
                             <th class="fs-6 fw-bold" scope="col">Address</th>
@@ -71,15 +71,15 @@ if (isset($_SESSION['customerEditStatus'])) {
                                 <td><?php echo $customer['Cus_Address'] ?></td>
                                 <form action="../controllers/customer-view-controller.php" method="post">
                                     <td>
-                                        <button name="submit-delete-customer" value="<?php echo $customer['Cus_NIC'] ?>" type="submit" class="btn btn-danger btn-sm px-3">
-                                            <i class="fas fa-times"></i>
+                                        <button name="submit-delete-customer" value="<?php echo $customer['Cus_NIC'] ?>" type="submit" class=" px-3" style="border-radius: 0.8rem; border:none ;background-color:inherit">
+                                            <i class="fas fa-times text-danger"></i>
                                         </button>
                                     </td>
                                 </form>
 
                                 <td>
-                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class="btn btn-secondary btn-sm px-3">
-                                        <i class="fas fa-user-edit"></i>
+                                    <button data-mdb-toggle="modal" data-mdb-target="#modal2" type="button" class="  px-3" style="border-radius: 0.8rem; border:none ;background-color:inherit">
+                                        <i class="fas fa-user-edit " style="color: #5BC980;"></i>
                                     </button>
                                 </td>
 
@@ -184,18 +184,18 @@ if (isset($_SESSION['customerEditStatus'])) {
 
                                 
                                 <!-- Submit button -->
-                                <button type="submit" name="submit-edit-customer" class="btn btn-primary btn-block fs-6 py-2 mb-2">Update Customer</button>
+                                <button type="submit" name="submit-edit-customer" class="btn bg-main text-white btn-block fs-6 py-2 mb-2">Update Customer</button>
                             </form>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
                     Close
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

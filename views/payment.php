@@ -1,4 +1,5 @@
 <?php
+$heading = 'MAKE PAYMENTS';
 include('./partials/header.php');
 require('../config/db.php');
 if (isset($_SESSION['priceWithoutPrePayements']) && isset($_SESSION['billAmount']) && isset($_SESSION['bill-vehicleDetails'])) {

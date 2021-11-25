@@ -1,6 +1,6 @@
 <?php
 
-
+$heading = 'ADD BOOKINGS';
 
 require('./partials/header.php');
 
