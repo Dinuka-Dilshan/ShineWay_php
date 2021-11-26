@@ -40,13 +40,13 @@ if (isset($_SESSION['ownerAddStatus'])) {
 
 
 <div class="container-fluid mt-3 ">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
+    <div class="row justify-content-center justify-content-lg-start">
+        <div class="col-12 col-lg-7 mt-lg-5">
             <div class="card border shadow-0 my-3 ">
-                <div class="card-header fs-3">
+                <!-- <div class="card-header fs-3">
                     ADD VEHICLE OWNER
-                </div>
-                <div class="card-body">
+                </div> -->
+                <div class="card-body pt-4">
                     <form class=" needs-validation" novalidate action="../controllers/owner-add-controller.php" method="POST">
                         <div class="row mb-4">
                             <div class="col-12 mt-2">
@@ -108,15 +108,27 @@ if (isset($_SESSION['ownerAddStatus'])) {
                         </div>
 
                         <!-- Submit button -->
-                        <div class="row">
+                        <div class="row mt-lg-5">
                             <div class="col-6">
-                                <button type="reset"  class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button>
+                                <button type="reset"  class="btn bg-light-green btn-block fs-6 py-2 mb-2">Reset</button>
                             </div>
                             <div class="col-6">
-                                <button type="submit" name="submit-add-owner" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add User</button>
+                                <button type="submit" name="submit-add-owner" class="btn bg-main text-white btn-block fs-6 py-2 mb-2">Add Owner</button>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5 my-3 d-none d-lg-block">
+            <div class="row">
+                <div class="col-12 my-2 mt-0">
+                    <div class=" border-rdious-1 mt-2 ">
+                        
+                            <img class="border-rdious-1" src="../public/img/owner.gif" alt="" style="width: 100%;">
+                        
+                    </div>
                 </div>
             </div>
         </div>

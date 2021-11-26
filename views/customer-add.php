@@ -42,13 +42,13 @@ if (isset($_SESSION['customerAddStatus'])) {
 
 
 <div class="container-fluid mt-5 ">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-            <div class="card border shadow-0 my-3 ">
-                <div class="card-header text-white fs-3 bg-danger pt-2">
+    <div class="row justify-content-center justify-content-lg-start">
+        <div class="col-12 col-lg-7">
+            <div class="card border  shadow-0 my-3 ">
+                <!-- <div class="card-header text-white fs-3 bg-danger pt-2">
                     ADD CUSTOMER
-                </div>
-                <div class="card-body">
+                </div> -->
+                <div class="card-body pt-lg-5">
                     <form  class=" needs-validation" novalidate action="../controllers/customer-add-controller.php" method="POST">
                         <div class="row mb-4">
                             <div class="col-12">
@@ -126,15 +126,27 @@ if (isset($_SESSION['customerAddStatus'])) {
                         </div>
 
                         <!-- Submit button -->
-                        <div class="row">
+                        <div class="row mt-lg-5">
                             <div class="col-6">
-                                <button type="reset" id="btnReset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button>
+                                <button type="reset" id="btnReset" class="btn bg-light-green btn-block fs-6 py-2 mb-2">Reset</button>
                             </div>
                             <div class="col-6">
-                                <button type="submit" name="submit-add-customer" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add User</button>
+                                <button type="submit" name="submit-add-customer" class="btn bg-main text-white btn-block fs-6 py-2 mb-2">Add Customer</button>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5 my-1 d-none d-lg-block">
+            <div class="row">
+                <div class="col-12  mt-0">
+                    <div class="border-rdious-1 py-2 border">
+                        
+                            <img class="border-rdious-1" src="../public/img/customer-add.jpg" alt="" style="width: 100%; height:100%">
+                        
+                    </div>
                 </div>
             </div>
         </div>
