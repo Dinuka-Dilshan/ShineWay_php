@@ -245,13 +245,21 @@ if (empty($Octomber)) {
                     </button>
                     <div class="collapse navbar-collapse " id="navbar">
                         <div class="navbar-nav ms-auto d-flex d-xl-none">
-                            <a class="nav-link active" aria-current="page" href="../controllers/home-controller.php">Home</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Booking</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Payment</a>
-                            <a class="nav-link" href="../controllers/customer-view-controller.php">Customers</a>
-                            <a class="nav-link" href="../controllers/vehicle-view-controller.php">Vehicles</a>
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
+                        <a class="nav-link active" aria-current="page" href="../controllers/home-controller.php">Dashboard</a>
+                            <a class="nav-link" href="../controllers/booking-view-controller.php">View Bookings</a>
+                            <a class="nav-link" href="../controllers/booking-add-controller.php">Add Booking</a>
+
+                            <a class="nav-link" href="../controllers/customer-view-controller.php">View Customers</a>
+                            <a class="nav-link" href="../controllers/customer-add-controller.php">Add Customers</a>
+                            <a class="nav-link" href="../controllers/vehicle-view-controller.php">View Vehicles</a>
+                            <a class="nav-link" href="../controllers/vehicle-add-controller.php">Add Vehicles</a>
+                            <a class="nav-link" href="../controllers/payment-controller.php">Make Payment</a>
+                            <a class="nav-link" href="../controllers/payment-view-controller.php">View Payments</a>
+
+                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-add-controller.php">Add Vehicle Owners</a>
+                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">View Vehicle Owners</a>
+                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-add-controller.php">Add Users</a>
+                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">View Users</a>
 
 
                         </div>
@@ -277,7 +285,7 @@ if (empty($Octomber)) {
                     <div class=" col-12  fs-6 ">
                         <div class="row">
                             <div class="col-lg-4 ">
-                                <div class="container border fw-bold " style="background-color: #EFF0FF; border-radius :1rem;">
+                                <div class="container border fw-bold my-3 my-lg-0" style="background-color: #EFF0FF; border-radius :1rem;">
                                     <div class="row p-4">
                                         <div class="col-9">
                                             <i class="fas fa-car me-2" style="color: #4F55DA;"></i><span style="color: #403d38;">Available Cars for Rent</span>
@@ -291,7 +299,7 @@ if (empty($Octomber)) {
                             </div>
 
                             <div class="col-lg-4">
-                                <div class="container border fw-bold" style="background-color: #FDF4D6; border-radius :1rem;">
+                                <div class="container border fw-bold my-3 my-lg-0" style="background-color: #FDF4D6; border-radius :1rem;">
                                     <div class="row p-4">
                                         <div class="col-10">
                                             <i class="fas fa-shuttle-van me-2" style="color: #E8C444;"></i><span style="color: #403d38;">Available Vans for Rent</span>
@@ -306,7 +314,7 @@ if (empty($Octomber)) {
                             </div>
 
                             <div class="col-lg-4 ">
-                                <div class="container border fw-bold" style="background-color: #FFF0ED; border-radius :1rem;">
+                                <div class="container border fw-bold my-3 my-lg-0" style="background-color: #FFF0ED; border-radius :1rem;">
                                     <div class="row p-4">
                                         <div class="col-10">
                                             <i class="fas fa-motorcycle me-2" style="color: #F06445;"></i><span style="color: #403d38;">Available Bikes for Rent</span>
@@ -327,7 +335,7 @@ if (empty($Octomber)) {
                         <!--table-->
                         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 
-                        <div class="row  mt-lg-1 <?php if ($userType == 'User') echo 'd-none' ?>" style="border-radius :1rem;">
+                        <div class="row  mt-lg-1 mb-3 mb-lg-0 <?php if ($userType == 'User') echo 'd-none' ?>" style="border-radius :1rem;">
                             <div class="col-12">
                                 <div class="card shadow-0 border">
                                     <div class="card-header bg-light-green ">

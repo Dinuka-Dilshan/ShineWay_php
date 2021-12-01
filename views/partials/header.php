@@ -346,7 +346,7 @@ if (isset($_SESSION['userType'])) {
                     document.querySelectorAll('#drop-item6').forEach((item) => {
                         item.style.display = 'none';
                     })
-                    
+
                     document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
                     document.getElementById('drop6').style.color = '#403d38';
 
@@ -385,7 +385,7 @@ if (isset($_SESSION['userType'])) {
                     document.querySelectorAll('#drop-item5').forEach((item) => {
                         item.style.display = 'none';
                     })
-                    
+
                     document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
                     document.getElementById('drop5').style.color = '#403d38';
 
@@ -403,8 +403,6 @@ if (isset($_SESSION['userType'])) {
 
 
                 })
-
-
             </script>
 
         </div>
@@ -422,14 +420,21 @@ if (isset($_SESSION['userType'])) {
                     </button>
                     <div class="collapse navbar-collapse " id="navbar">
                         <div class="navbar-nav ms-auto d-flex d-xl-none">
-                            <a class="nav-link active" aria-current="page" href="../controllers/home-controller.php">Home</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Booking</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Payment</a>
-                            <a class="nav-link" href="../controllers/customer-view-controller.php">Customers</a>
-                            <a class="nav-link" href="../controllers/vehicle-view-controller.php">Vehicles</a>
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
-                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
+                            <a class="nav-link active" aria-current="page" href="../controllers/home-controller.php">Dashboard</a>
+                            <a class="nav-link" href="../controllers/booking-view-controller.php">View Bookings</a>
+                            <a class="nav-link" href="../controllers/booking-add-controller.php">Add Booking</a>
 
+                            <a class="nav-link" href="../controllers/customer-view-controller.php">View Customers</a>
+                            <a class="nav-link" href="../controllers/customer-add-controller.php">Add Customers</a>
+                            <a class="nav-link" href="../controllers/vehicle-view-controller.php">View Vehicles</a>
+                            <a class="nav-link" href="../controllers/vehicle-add-controller.php">Add Vehicles</a>
+                            <a class="nav-link" href="../controllers/payment-controller.php">Make Payment</a>
+                            <a class="nav-link" href="../controllers/payment-view-controller.php">View Payments</a>
+
+                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-add-controller.php">Add Vehicle Owners</a>
+                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">View Vehicle Owners</a>
+                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-add-controller.php">Add Users</a>
+                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">View Users</a>
 
                         </div>
 
