@@ -78,9 +78,9 @@ if (isset($_SESSION['ownerEditStatus'])) {
                                 <td><?php echo $vehicle['Weekly_price'] ?></td>
                                 <td><?php echo $vehicle['Monthly_price'] ?></td>
                                 <td><?php echo $vehicle['Owner_payment'] ?></td>
-                                <form action="../controllers/user-view-controller.php" method="post">
+                                <form action="../controllers/vehicle-view-controller.php" method="post">
                                     <td>
-                                        <button name="submit-delete-user" value="<?php echo $user['ID'] ?>" type="submit" class=" px-3" style="border-radius: 0.8rem; border:none ;background-color:inherit">
+                                        <button name="submit-delete-vehicle" value="<?php echo $vehicle['Vehicle_num'] ?>" type="submit" class=" px-3" style="border-radius: 0.8rem; border:none ;background-color:inherit">
                                             <i class="fas fa-times text-danger"></i>
                                         </button>
                                     </td>
