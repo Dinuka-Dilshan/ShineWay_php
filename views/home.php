@@ -245,21 +245,21 @@ if (empty($Octomber)) {
                     </button>
                     <div class="collapse navbar-collapse " id="navbar">
                         <div class="navbar-nav ms-auto d-flex d-xl-none">
-                        <a class="nav-link active" aria-current="page" href="../controllers/home-controller.php">Dashboard</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">View Bookings</a>
-                            <a class="nav-link" href="../controllers/booking-add-controller.php">Add Booking</a>
+                        <a class="nav-link active text-main" aria-current="page" href="../controllers/home-controller.php">Dashboard</a>
+                            <a class="nav-link text-main" href="../controllers/booking-view-controller.php">View Bookings</a>
+                            <a class="nav-link text-main" href="../controllers/booking-add-controller.php">Add Booking</a>
 
-                            <a class="nav-link" href="../controllers/customer-view-controller.php">View Customers</a>
-                            <a class="nav-link" href="../controllers/customer-add-controller.php">Add Customers</a>
-                            <a class="nav-link" href="../controllers/vehicle-view-controller.php">View Vehicles</a>
-                            <a class="nav-link" href="../controllers/vehicle-add-controller.php">Add Vehicles</a>
-                            <a class="nav-link" href="../controllers/payment-controller.php">Make Payment</a>
-                            <a class="nav-link" href="../controllers/payment-view-controller.php">View Payments</a>
+                            <a class="nav-link text-main" href="../controllers/customer-view-controller.php">View Customers</a>
+                            <a class="nav-link text-main" href="../controllers/customer-add-controller.php">Add Customers</a>
+                            <a class="nav-link text-main" href="../controllers/vehicle-view-controller.php">View Vehicles</a>
+                            <a class="nav-link text-main" href="../controllers/vehicle-add-controller.php">Add Vehicles</a>
+                            <a class="nav-link text-main" href="../controllers/payment-controller.php">Make Payment</a>
+                            <a class="nav-link text-main" href="../controllers/payment-view-controller.php">View Payments</a>
 
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-add-controller.php">Add Vehicle Owners</a>
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">View Vehicle Owners</a>
-                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-add-controller.php">Add Users</a>
-                            <a <?php ?> class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">View Users</a>
+                            <a class="nav-link text-main <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-add-controller.php">Add Vehicle Owners</a>
+                            <a class="nav-link text-main <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">View Vehicle Owners</a>
+                            <a <?php ?> class="nav-link text-main <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-add-controller.php">Add Users</a>
+                            <a <?php ?> class="nav-link  text-main<?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">View Users</a>
 
 
                         </div>
@@ -267,7 +267,7 @@ if (empty($Octomber)) {
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start d-flex d-xl-none">
 
                             <form action="../config/logout.php">
-                                <input class="btn btn-primary " type="submit" value="Logout" />
+                                <input class="btn bg-main text-white " type="submit" value="Logout" />
                             </form>
 
                         </div>
