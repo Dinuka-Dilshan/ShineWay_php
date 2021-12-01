@@ -37,7 +37,7 @@ if (isset($_SESSION['userType'])) {
             <hr style="width:100% border">
             <div class="d-flex justify-content-center flex-column mt-6">
 
-                <div class="drop"  onclick="location.href='../controllers/home-controller.php'">
+                <div class="drop" onclick="location.href='../controllers/home-controller.php'">
                     <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Dashboard</span>
                 </div>
 
@@ -140,9 +140,24 @@ if (isset($_SESSION['userType'])) {
 
 
 
-                <div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
+                <!-- <div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
                     <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payment</span>
+                </div>-->
+
+                <div class="drop " id="drop6">
+                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payments</span>
                 </div>
+                <!--<div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
+                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payments</span>
+                </div>-->
+                <div class="drop-item" id="drop-item6">
+                    <a class="dropdown-item" href="../controllers/payment-controller.php">Make Payment</a>
+                </div>
+
+                <div class="drop-item" id="drop-item6">
+                    <a class="dropdown-item" href="../controllers/payment-view-controller.php">View Payments</a>
+                </div>
+
 
 
 
@@ -164,156 +179,231 @@ if (isset($_SESSION['userType'])) {
                 navItemDropHandler('drop3', 'drop-item3', '#4FC9DA', 'white');
                 navItemDropHandler('drop4', 'drop-item4', '#4FC9DA', 'white');
                 navItemDropHandler('drop5', 'drop-item5', '#4FC9DA', 'white');
+                navItemDropHandler('drop6', 'drop-item6', '#4FC9DA', 'white');
+
                 document.getElementById('drop').addEventListener('click', () => {
-            document.querySelectorAll('#drop-item2').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item3').forEach((item) => {
-                item.style.display = 'none';
-            })
+                    document.querySelectorAll('#drop-item2').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item3').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
-
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
-
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
-
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+                    document.querySelectorAll('#drop-item6').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
 
-        });
+                    document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop2').style.color = '#403d38';
 
-        document.getElementById('drop2').addEventListener('click', () => {
-            document.querySelectorAll('#drop-item').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item3').forEach((item) => {
-                item.style.display = 'none';
-            })
+                    document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop3').style.color = '#403d38';
 
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
+                    document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop4').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+                    document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop5').style.color = '#403d38';
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
-
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
-
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+                    document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop6').style.color = '#403d38';
 
 
-        })
+                });
+
+                document.getElementById('drop2').addEventListener('click', () => {
+                    document.querySelectorAll('#drop-item').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item3').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.querySelectorAll('#drop-item6').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop').style.color = '#403d38';
+
+                    document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop3').style.color = '#403d38';
+
+                    document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop4').style.color = '#403d38';
+
+                    document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop5').style.color = '#403d38';
+
+                    document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop6').style.color = '#403d38';
+                })
 
 
-        document.getElementById('drop3').addEventListener('click', () => {
-            document.querySelectorAll('#drop-item2').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item').forEach((item) => {
-                item.style.display = 'none';
-            })
+                document.getElementById('drop3').addEventListener('click', () => {
+                    document.querySelectorAll('#drop-item2').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item6').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+                    document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop6').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+                    document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+                    document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+                    document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop4').style.color = '#403d38';
 
-
-        })
-
-        document.getElementById('drop4').addEventListener('click', () => {
-            document.querySelectorAll('#drop-item2').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item3').forEach((item) => {
-                item.style.display = 'none';
-            })
-
-            document.querySelectorAll('#drop-item').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item5').forEach((item) => {
-                item.style.display = 'none';
-            })
-
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
-
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
-
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
-
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+                    document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop5').style.color = '#403d38';
 
 
-        })
+                })
 
-        document.getElementById('drop5').addEventListener('click', () => {
-            document.querySelectorAll('#drop-item2').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item3').forEach((item) => {
-                item.style.display = 'none';
-            })
+                document.getElementById('drop4').addEventListener('click', () => {
+                    document.querySelectorAll('#drop-item2').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item3').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.querySelectorAll('#drop-item4').forEach((item) => {
-                item.style.display = 'none';
-            })
-            document.querySelectorAll('#drop-item').forEach((item) => {
-                item.style.display = 'none';
-            })
+                    document.querySelectorAll('#drop-item').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item5').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+                    document.querySelectorAll('#drop-item6').forEach((item) => {
+                        item.style.display = 'none';
+                    })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+                    document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop6').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+                    document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+                    document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop3').style.color = '#403d38';
+
+                    document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop').style.color = '#403d38';
+
+                    document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop5').style.color = '#403d38';
 
 
-        })
+                })
+
+                document.getElementById('drop5').addEventListener('click', () => {
+                    document.querySelectorAll('#drop-item2').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item3').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.querySelectorAll('#drop-item6').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    
+                    document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop6').style.color = '#403d38';
+
+                    document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop2').style.color = '#403d38';
+
+                    document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop3').style.color = '#403d38';
+
+                    document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop4').style.color = '#403d38';
+
+                    document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop').style.color = '#403d38';
+
+
+                })
+
+
+
+                document.getElementById('drop6').addEventListener('click', () => {
+                    document.querySelectorAll('#drop-item2').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item3').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.querySelectorAll('#drop-item4').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    document.querySelectorAll('#drop-item').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+
+                    document.querySelectorAll('#drop-item5').forEach((item) => {
+                        item.style.display = 'none';
+                    })
+                    
+                    document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop5').style.color = '#403d38';
+
+                    document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop2').style.color = '#403d38';
+
+                    document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop3').style.color = '#403d38';
+
+                    document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop4').style.color = '#403d38';
+
+                    document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+                    document.getElementById('drop').style.color = '#403d38';
+
+
+                })
+
 
             </script>
 

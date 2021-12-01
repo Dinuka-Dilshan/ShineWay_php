@@ -201,12 +201,19 @@ if (empty($Octomber)) {
 
 
 
-
-
-                <div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
-                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payment</span>
+                <div class="drop " id="drop6">
+                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payments</span>
+                </div>
+                <!--<div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
+                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payments</span>
+                </div>-->
+                <div class="drop-item" id="drop-item6">
+                    <a class="dropdown-item" href="../controllers/payment-controller.php">Make Payment</a>
                 </div>
 
+                <div class="drop-item" id="drop-item6">
+                    <a class="dropdown-item" href="../controllers/payment-view-controller.php">View Payments</a>
+                </div>
 
 
 
@@ -231,7 +238,7 @@ if (empty($Octomber)) {
                 <div class="container-fluid ">
                     <a id="btn-side-nav" class=" d-none d-xl-block" role="button"><i class="fas fa-align-justify " style="color: #4FC9DA;"></i>
                     </a>
-                    <a class="navbar-brand ms-3 text-black fw-bold" >Dashboard</a>
+                    <a class="navbar-brand ms-3 text-black fw-bold">Dashboard</a>
 
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
                         <i class="fas fa-bars"></i>
@@ -506,6 +513,7 @@ if (empty($Octomber)) {
         navItemDropHandler('drop3', 'drop-item3', '#4FC9DA', 'white');
         navItemDropHandler('drop4', 'drop-item4', '#4FC9DA', 'white');
         navItemDropHandler('drop5', 'drop-item5', '#4FC9DA', 'white');
+        navItemDropHandler('drop6', 'drop-item6', '#4FC9DA', 'white');
 
 
 
@@ -524,17 +532,26 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
+
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
+
+
 
 
         });
@@ -554,18 +571,24 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
 
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
 
         })
 
@@ -585,18 +608,25 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
 
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
         })
 
@@ -615,18 +645,24 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
 
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
 
         })
 
@@ -644,21 +680,68 @@ if (empty($Octomber)) {
             document.querySelectorAll('#drop-item').forEach((item) => {
                 item.style.display = 'none';
             })
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
+
+        })
+
+
+        document.getElementById('drop6').addEventListener('click', () => {
+            document.querySelectorAll('#drop-item2').forEach((item) => {
+                item.style.display = 'none';
+            })
+            document.querySelectorAll('#drop-item3').forEach((item) => {
+                item.style.display = 'none';
+            })
+
+            document.querySelectorAll('#drop-item4').forEach((item) => {
+                item.style.display = 'none';
+            })
+            document.querySelectorAll('#drop-item').forEach((item) => {
+                item.style.display = 'none';
+            })
+
+            document.querySelectorAll('#drop-item5').forEach((item) => {
+                item.style.display = 'none';
+            })
+
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
+
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
+
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
+
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
+
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
 
 
         })
+
+
+
+
 
         const table = document.getElementById('dataTable');
         let modalImageOverall = document.getElementById('modal-image-overall');
