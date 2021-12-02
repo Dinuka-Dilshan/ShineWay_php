@@ -99,10 +99,10 @@ if (isset($_SESSION['userAddStatus'])) {
                         <div class="row mb-4">
                             <div class="col-12">
                                 <div class="form-outline">
-                                    <input  id="password"  name="password" type="password"  autocomplete="off" class="form-control" required />
+                                    <input minlength="8" id="password"  name="password" type="password"  autocomplete="off" class="form-control" required />
                                     <label class="form-label" for="form6Example1">Password</label>
                                     <div class="valid-feedback">Looks good!</div>
-                                    <div class="invalid-feedback">Enter a valid Password</div>
+                                    <div class="invalid-feedback">Minimum Length is 8 characters</div>
                                 </div>
                             </div>
                         </div>
