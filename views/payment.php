@@ -16,18 +16,16 @@ if (isset($_SESSION['priceWithoutPrePayements']) && isset($_SESSION['billAmount'
 
 ?>
 
-<div class="m-2 border ">
-<div class="col-12 col-lg-4 p-3 fw-bold fs-5 text-white bg-success w-100 ">
-MAKE PAYMENT
-</div>
+<div class="m-1 border mt-lg-4" style="box-sizing: border-box;">
+
 <div class="container-fluid print-hidden mt-5 p-2 mb-3">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-lg-6 ">
+    <div class="row justify-content-center justify-content-lg-start ">
+        <div class="col-12 col-lg-8  ">
             <div class="card border shadow-0 my-3 ">
-                <div class="card-header fs-4">
+                <!-- <div class="card-header fs-4">
                     MAKE PAYMENT
-                </div>
-                <div class="card-body">
+                </div> -->
+                <div class="card-body pt-5">
                     <form class=" needs-validation" novalidate method="POST" action="../controllers/payment-controller.php">
 
                         <div class="row mb-3">
@@ -56,15 +54,25 @@ MAKE PAYMENT
 
 
 
-                        <div class="row mt-3">
-                            <div class="col-6"><button type="reset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button></div>
-                            <div class="col-6"><button type="submit" name="submit-payment" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add</button></div>
+                        <div class="row mt-3 pt-lg-4">
+                            <div class="col-6"><button type="reset" class="btn bg-light-green btn-block fs-6 py-2 mb-2">Reset</button></div>
+                            <div class="col-6"><button type="submit" name="submit-payment" class="btn bg-main text-white btn-block fs-6 py-2 mb-2">Pay</button></div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
+        <div class="col-4  d-none d-lg-block">
+            <div class="row">
+                <div class="col-12 my-2 mt-0">
+                    <div class="  border border-rdious-1">
+                        
+                            <img class="border-rdious-1" src="../public/img/payment.gif" alt="" style="width: 100%; height:100%">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -162,7 +170,7 @@ MAKE PAYMENT
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="printBtn">
+                <button type="button" class="btn bg-main text-white" id="printBtn">
                     Print
                 </button>
             </div>

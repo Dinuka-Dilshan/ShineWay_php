@@ -3,9 +3,9 @@
 
     require("../config/db.php");
 
-    if(isset($_POST['submit-delete-customer'])){
-        $NIC = $_POST['submit-delete-customer'];
-        $query = "DELETE FROM `customer` WHERE `Cus_NIC` = '$NIC'";
+    if(isset($_POST['submit-delete-vehicle'])){
+        $Vehicle_num = $_POST['submit-delete-vehicle'];
+        $query = "DELETE FROM `vehicle` WHERE `Vehicle_num` = '$Vehicle_num'";
 
         $result = $connection->query($query);
     }

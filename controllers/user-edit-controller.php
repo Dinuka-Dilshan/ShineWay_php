@@ -11,8 +11,15 @@ if (isset($_POST['submit-edit-user'])) {
     $address = $_POST['edit-address'];
     $NIC = $_POST['edit-NIC'];
     $userType = $_POST['edit-userType'];
+    $newPassword = ($_POST['edit-password']);
+    $query;
+    if(isset($_POST['edit-password']) && strlen($newPassword)!=0){
+        $query = "UPDATE `users` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address' ,`password`='$newPassword' WHERE `ID` = '$ID'";
+    }else{
+        $query = "UPDATE `users` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address'  WHERE `ID` = '$ID'";
+    }
 
-    $query = "UPDATE `users` SET `NIC`='$NIC',`name`='$name',`user_type`='$userType',`email`='$email',`Telephone`='$phone',`Address`='$address'  WHERE `ID` = '$ID'";
+    
 
     $result = $connection->query($query);
 

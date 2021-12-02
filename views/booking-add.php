@@ -88,23 +88,21 @@ if (isset($_SESSION['bookingAddStatus'])) {
         $customerPhone = $_SESSION['billPreviewCustomerTelephone'];
         $package;
 
-        if($_SESSION['billPreviewPackageType'] == "Daily Basis"){
+        if ($_SESSION['billPreviewPackageType'] == "Daily Basis") {
             $package = $_SESSION['billPreviewVehicleDailyPrice'];
         }
-        
-        if($_SESSION['billPreviewPackageType'] == "Weekly Basis"){
+
+        if ($_SESSION['billPreviewPackageType'] == "Weekly Basis") {
             $package = $_SESSION['billPreviewVehicleWeeklyPrice'];
         }
-        
-        if($_SESSION['billPreviewPackageType'] == "Monthly Basis"){
+
+        if ($_SESSION['billPreviewPackageType'] == "Monthly Basis") {
             $package = $_SESSION['billPreviewVehicleMonthlyPrice'];
         }
 
-        $billDescription = "Booking Payment  -  ".$_SESSION['billPreviewVehicleNumber'] ."  -  ". $_SESSION['billPreviewPackageType']."  -RS: ". $package;
+        $billDescription = "Booking Payment  -  " . $_SESSION['billPreviewVehicleNumber'] . "  -  " . $_SESSION['billPreviewPackageType'] . "  -RS: " . $package;
         $billPrice  = $_SESSION['billPreviewDepositAmount'] + $_SESSION['billPreviewPayment'];
         $bookingID = $_SESSION['billPreviewBookingID'];
-        
-        
     } else {
         $error = -1;
     }
@@ -117,16 +115,16 @@ if (isset($_SESSION['bookingAddStatus'])) {
 
 
 
-<div class="container-fluid print-hidden mt-2">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-            <div class="card border shadow-0 my-3 ">
-                <div class="card-header fs-4 bg-success">
+<div class="container-fluid print-hidden ">
+    <div class="row justify-content-center justify-content-lg-start">
+        <div class="col-12 col-lg-7">
+            <div class="card border shadow-0 my-5 ">
+                <!-- <div class="card-header fs-4 bg-success">
                     ADD BOOKING
-                </div>
+                </div> -->
                 <div class="card-body">
                     <form class=" needs-validation" novalidate method="POST" action="../controllers/booking-add-controller.php">
-                        
+
                         <div class="row mb-3">
                             <div class="col">
                                 <div class="form-outline">
@@ -220,13 +218,26 @@ if (isset($_SESSION['bookingAddStatus'])) {
                         </div>
 
                         <div class="row">
-                            <div class="col-6"><button type="reset" class="btn btn-primary btn-block fs-6 py-2 mb-2">Reset</button></div>
-                            <div class="col-6"><button type="submit" name="submit-add-booking" class="btn btn-primary btn-block fs-6 py-2 mb-2">Add</button></div>
+                            <div class="col-6"><button type="reset" class="btn bg-light-green btn-block fs-6 py-2 mb-2">Reset</button></div>
+                            <div class="col-6"><button type="submit" name="submit-add-booking" class="btn bg-main text-white btn-block fs-6 py-2 mb-2">Add</button></div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <div class="col-5 my-4 d-none d-lg-block">
+            <div class="row">
+                <div class="col-12  mt-0">
+                    <div class=" py-5 border border-rdious-1">
+                        
+                            <img class="border-rdious-1" src="../public/img/booking.gif" alt="" style="width: 100%; height:100%">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </div>
@@ -358,7 +369,7 @@ if (isset($_SESSION['bookingAddStatus'])) {
                             </div>
                             <div class="col-4 p-0">
                                 <p class="fw-bold">Invoice</p>
-                                <p id="billPreviewBookingID">ID  <?php echo $bookingID ?></p>
+                                <p id="billPreviewBookingID">ID <?php echo $bookingID ?></p>
                                 <p>Issue Date: <?php echo date("Y-m-d") ?></p>
                             </div>
                         </div>
@@ -386,18 +397,18 @@ if (isset($_SESSION['bookingAddStatus'])) {
 
                         <div class="row justify-content-end mt-4 ">
                             <div class="col-4" id="billSubTotal">
-                                Sub Total:  <?php echo $billPrice; ?>
+                                Sub Total: <?php echo $billPrice; ?>
                             </div>
                         </div>
                         <div class="row justify-content-end border-bottom pb-3">
                             <div class="col-4" id="billTotal">
-                              Total Price: <?php echo $billPrice; ?>
+                                Total Price: <?php echo $billPrice; ?>
                             </div>
                         </div>
 
                         <div class="row mt-5">
                             <div class="col">
-                                <p class="text-center fs-6">Thank You | Shineway &copy;2021</p>   
+                                <p class="text-center fs-6">Thank You | Shineway &copy;2021</p>
                             </div>
                         </div>
 
@@ -407,7 +418,7 @@ if (isset($_SESSION['bookingAddStatus'])) {
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="printBtn">
+                <button type="button" class="btn bg-main text-white" id="printBtn">
                     Print
                 </button>
             </div>
@@ -425,8 +436,8 @@ if (isset($_SESSION['bookingAddStatus'])) {
         return document.getElementById(elementID);
     }
 
-    function setFiledsAfterFail( vehicleNumber, license, startingDate, packageType, NIC, depositAmount, advancedPayment, description) {
-        
+    function setFiledsAfterFail(vehicleNumber, license, startingDate, packageType, NIC, depositAmount, advancedPayment, description) {
+
         getByID('vehicleNumber').value = vehicleNumber;
         getByID('license').value = license;
         getByID('startingDate').value = startingDate;
@@ -446,19 +457,19 @@ if (isset($_SESSION['bookingAddStatus'])) {
     } else if ($error == "2") {
         echo "document.getElementById('btnErrorEmailModal').click();";
         echo $scriptSetValues;
-    }else if ($error == "3") {
+    } else if ($error == "3") {
         echo "document.getElementById('btnModalBillPreview').click();";
     }
 
-    
+
     ?>
 
-  
+
 
     document.getElementById('printBtn').addEventListener('click', () => {
 
         const element = document.getElementById('print')
-        html2pdf().from(element).toPdf().save(getByID('billPreviewBookingID').innerHTML+'.pdf')
+        html2pdf().from(element).toPdf().save(getByID('billPreviewBookingID').innerHTML + '.pdf')
 
     })
 </script>

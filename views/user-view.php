@@ -200,6 +200,17 @@ if (isset($_SESSION['userEditStatus'])) {
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input minlength="8" name="edit-password" id="Modal-edit-password" type="text" id="form6Example7" class="form-control"  />
+                                            <label class="form-label" for="form6Example7">Password</label>
+                                            <div class="valid-feedback ">Looks good!</div>
+                                            <div class="invalid-feedback ">Minimum Length is 8 characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div class="row mb-4">
                                     <div class="col-12 ">

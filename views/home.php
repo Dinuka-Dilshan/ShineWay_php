@@ -201,12 +201,19 @@ if (empty($Octomber)) {
 
 
 
-
-
-                <div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
-                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payment</span>
+                <div class="drop " id="drop6">
+                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payments</span>
+                </div>
+                <!--<div class="drop " id="drop5" onclick="location.href ='../controllers/payment-controller.php' ">
+                    <i class="fas fa-arrow-circle-right"></i><span class="ms-3">Payments</span>
+                </div>-->
+                <div class="drop-item" id="drop-item6">
+                    <a class="dropdown-item" href="../controllers/payment-controller.php">Make Payment</a>
                 </div>
 
+                <div class="drop-item" id="drop-item6">
+                    <a class="dropdown-item" href="../controllers/payment-view-controller.php">View Payments</a>
+                </div>
 
 
 
@@ -231,20 +238,28 @@ if (empty($Octomber)) {
                 <div class="container-fluid ">
                     <a id="btn-side-nav" class=" d-none d-xl-block" role="button"><i class="fas fa-align-justify " style="color: #4FC9DA;"></i>
                     </a>
-                    <a class="navbar-brand ms-3 text-black fw-bold" >Dashboard</a>
+                    <a class="navbar-brand ms-3 text-black fw-bold">Dashboard</a>
 
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
                         <i class="fas fa-bars"></i>
                     </button>
                     <div class="collapse navbar-collapse " id="navbar">
                         <div class="navbar-nav ms-auto d-flex d-xl-none">
-                            <a class="nav-link active" aria-current="page" href="../controllers/home-controller.php">Home</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Booking</a>
-                            <a class="nav-link" href="../controllers/booking-view-controller.php">Payment</a>
-                            <a class="nav-link" href="../controllers/customer-view-controller.php">Customers</a>
-                            <a class="nav-link" href="../controllers/vehicle-view-controller.php">Vehicles</a>
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">Vehicle Owners</a>
-                            <a class="nav-link <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">Users</a>
+                        <a class="nav-link active text-main" aria-current="page" href="../controllers/home-controller.php">Dashboard</a>
+                            <a class="nav-link text-main" href="../controllers/booking-view-controller.php">View Bookings</a>
+                            <a class="nav-link text-main" href="../controllers/booking-add-controller.php">Add Booking</a>
+
+                            <a class="nav-link text-main" href="../controllers/customer-view-controller.php">View Customers</a>
+                            <a class="nav-link text-main" href="../controllers/customer-add-controller.php">Add Customers</a>
+                            <a class="nav-link text-main" href="../controllers/vehicle-view-controller.php">View Vehicles</a>
+                            <a class="nav-link text-main" href="../controllers/vehicle-add-controller.php">Add Vehicles</a>
+                            <a class="nav-link text-main" href="../controllers/payment-controller.php">Make Payment</a>
+                            <a class="nav-link text-main" href="../controllers/payment-view-controller.php">View Payments</a>
+
+                            <a class="nav-link text-main <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-add-controller.php">Add Vehicle Owners</a>
+                            <a class="nav-link text-main <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/owner-view-controller.php">View Vehicle Owners</a>
+                            <a <?php ?> class="nav-link text-main <?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-add-controller.php">Add Users</a>
+                            <a <?php ?> class="nav-link  text-main<?php if ($userType == 'User') echo 'd-none' ?>" href="../controllers/user-view-controller.php">View Users</a>
 
 
                         </div>
@@ -252,7 +267,7 @@ if (empty($Octomber)) {
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start d-flex d-xl-none">
 
                             <form action="../config/logout.php">
-                                <input class="btn btn-primary " type="submit" value="Logout" />
+                                <input class="btn bg-main text-white " type="submit" value="Logout" />
                             </form>
 
                         </div>
@@ -270,7 +285,7 @@ if (empty($Octomber)) {
                     <div class=" col-12  fs-6 ">
                         <div class="row">
                             <div class="col-lg-4 ">
-                                <div class="container border fw-bold " style="background-color: #EFF0FF; border-radius :1rem;">
+                                <div class="container border fw-bold my-3 my-lg-0" style="background-color: #EFF0FF; border-radius :1rem;">
                                     <div class="row p-4">
                                         <div class="col-9">
                                             <i class="fas fa-car me-2" style="color: #4F55DA;"></i><span style="color: #403d38;">Available Cars for Rent</span>
@@ -284,7 +299,7 @@ if (empty($Octomber)) {
                             </div>
 
                             <div class="col-lg-4">
-                                <div class="container border fw-bold" style="background-color: #FDF4D6; border-radius :1rem;">
+                                <div class="container border fw-bold my-3 my-lg-0" style="background-color: #FDF4D6; border-radius :1rem;">
                                     <div class="row p-4">
                                         <div class="col-10">
                                             <i class="fas fa-shuttle-van me-2" style="color: #E8C444;"></i><span style="color: #403d38;">Available Vans for Rent</span>
@@ -299,7 +314,7 @@ if (empty($Octomber)) {
                             </div>
 
                             <div class="col-lg-4 ">
-                                <div class="container border fw-bold" style="background-color: #FFF0ED; border-radius :1rem;">
+                                <div class="container border fw-bold my-3 my-lg-0" style="background-color: #FFF0ED; border-radius :1rem;">
                                     <div class="row p-4">
                                         <div class="col-10">
                                             <i class="fas fa-motorcycle me-2" style="color: #F06445;"></i><span style="color: #403d38;">Available Bikes for Rent</span>
@@ -320,7 +335,7 @@ if (empty($Octomber)) {
                         <!--table-->
                         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 
-                        <div class="row  mt-lg-1 <?php if ($userType == 'User') echo 'd-none' ?>" style="border-radius :1rem;">
+                        <div class="row  mt-lg-1 mb-3 mb-lg-0 <?php if ($userType == 'User') echo 'd-none' ?>" style="border-radius :1rem;">
                             <div class="col-12">
                                 <div class="card shadow-0 border">
                                     <div class="card-header bg-light-green ">
@@ -506,6 +521,7 @@ if (empty($Octomber)) {
         navItemDropHandler('drop3', 'drop-item3', '#4FC9DA', 'white');
         navItemDropHandler('drop4', 'drop-item4', '#4FC9DA', 'white');
         navItemDropHandler('drop5', 'drop-item5', '#4FC9DA', 'white');
+        navItemDropHandler('drop6', 'drop-item6', '#4FC9DA', 'white');
 
 
 
@@ -524,17 +540,26 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
+
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
+
+
 
 
         });
@@ -554,18 +579,24 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
 
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
 
         })
 
@@ -585,18 +616,25 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
 
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
         })
 
@@ -615,18 +653,24 @@ if (empty($Octomber)) {
                 item.style.display = 'none';
             })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop5').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop5').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
 
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
 
         })
 
@@ -644,21 +688,68 @@ if (empty($Octomber)) {
             document.querySelectorAll('#drop-item').forEach((item) => {
                 item.style.display = 'none';
             })
+            document.querySelectorAll('#drop-item6').forEach((item) => {
+                item.style.display = 'none';
+            })
 
-            document.getElementById('drop2').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop2').style.color='#403d38';
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
 
-            document.getElementById('drop3').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop3').style.color='#403d38';
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
 
-            document.getElementById('drop4').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop4').style.color='#403d38';
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
 
-            document.getElementById('drop').style.backgroundColor='#F8F6F2';
-            document.getElementById('drop').style.color='#403d38';
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
+
+            document.getElementById('drop6').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop6').style.color = '#403d38';
+
+        })
+
+
+        document.getElementById('drop6').addEventListener('click', () => {
+            document.querySelectorAll('#drop-item2').forEach((item) => {
+                item.style.display = 'none';
+            })
+            document.querySelectorAll('#drop-item3').forEach((item) => {
+                item.style.display = 'none';
+            })
+
+            document.querySelectorAll('#drop-item4').forEach((item) => {
+                item.style.display = 'none';
+            })
+            document.querySelectorAll('#drop-item').forEach((item) => {
+                item.style.display = 'none';
+            })
+
+            document.querySelectorAll('#drop-item5').forEach((item) => {
+                item.style.display = 'none';
+            })
+
+            document.getElementById('drop2').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop2').style.color = '#403d38';
+
+            document.getElementById('drop3').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop3').style.color = '#403d38';
+
+            document.getElementById('drop4').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop4').style.color = '#403d38';
+
+            document.getElementById('drop').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop').style.color = '#403d38';
+
+            document.getElementById('drop5').style.backgroundColor = '#F8F6F2';
+            document.getElementById('drop5').style.color = '#403d38';
 
 
         })
+
+
+
+
 
         const table = document.getElementById('dataTable');
         let modalImageOverall = document.getElementById('modal-image-overall');
